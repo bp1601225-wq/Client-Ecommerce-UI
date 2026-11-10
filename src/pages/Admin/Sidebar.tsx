@@ -18,6 +18,7 @@ import {
   Store,
   ChevronLeft,
   ChevronRight,
+  ShieldAlert,
 } from 'lucide-react'
 import { useState } from 'react'
 
@@ -74,6 +75,14 @@ const adminMenuItems = [
       },
       { name: 'Support Messages', path: '/admin-support', icon: Headset },
       { name: 'Settings', path: '/admin-settings', icon: Settings },
+    ],
+  },
+
+   {
+    title: 'SYSTEM LOGS',
+    items: [
+  
+      { name: 'Logs', path: '/admin-settings', icon: ShieldAlert },
     ],
   },
 ]
