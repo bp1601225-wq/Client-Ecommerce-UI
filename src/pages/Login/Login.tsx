@@ -2,8 +2,6 @@ import { Button } from "@mui/material";
 import {
   Mail,
   LockKeyhole,
-  LogIn,
-  Sparkles,
   Eye,
   EyeOff,
   ShieldCheck,
@@ -12,7 +10,6 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../components/ZustandShare/AuthZuts";
-import { toast } from "sonner";
 
 function Login() {
   const navigate = useNavigate();
@@ -23,7 +20,7 @@ function Login() {
 const [isLoading, setIsLoading] = useState(false)
 
 
-  const {Login, currentUser} = useAuthStore()
+  const { Login } = useAuthStore()
 
 const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();

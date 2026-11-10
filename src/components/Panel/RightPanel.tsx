@@ -18,7 +18,7 @@ function RightPanel({
       {/* Backdrop */}
       <div
         onClick={onClose}
-        className={`
+        className={`s
           fixed inset-0
           bg-black/30
           z-[100]

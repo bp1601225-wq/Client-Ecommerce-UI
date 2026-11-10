@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import {
   LayoutDashboard,
   ClipboardList,
-  BarChart3,
   Settings,
   ChevronDown,
   ChevronRight,

@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import API, { handleAxiosError } from "../configuration/API";
-import { toast } from "sonner";
 
 type User = {
   id: string;
