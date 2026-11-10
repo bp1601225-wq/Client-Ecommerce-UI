@@ -2,15 +2,9 @@
 import { Link, NavLink } from 'react-router-dom'
 import { Menu, ShoppingCart, X, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
+import { menuItems } from './NavItems'
+import logo from "../../../src/assets/logo.png"
 
-const menuItems = [
-  { name: 'Dashboard', path: '/whole-sale-dashboard' },
-  { name: 'Shop Wholesale', path: '/whole-sale-products' },
-  { name: 'My Cart', path: '/whole-sale-cart' },
-  { name: 'My Orders', path: '/whole-sale-orders' },
-  { name: 'Business Profile', path: '/whole-sale-profile' },
-  { name: 'Support', path: '/whole-sale-support' },
-]
 
 export default function WholesaleNavBar() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -26,9 +20,7 @@ export default function WholesaleNavBar() {
             to="/whole-sale-dashboard"
             className="flex shrink-0 items-center gap-3"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#fd7e02] text-lg font-black text-black">
-              M
-            </div>
+              <img src={logo} alt="" width={50} />
 
             <div>
               <h1 className="text-[17px] font-black tracking-tight text-white">

@@ -23,6 +23,20 @@ import WholesaleOrdersPage from '../pages/WholeSale/WholesaleOrdersPage'
 import WholesaleProfilePage from '../pages/WholeSale/WholesaleProfilePage'
 import WholesaleSupportPage from '../pages/WholeSale/WholesaleSupportPage'
 import WholesaleLayout from '../components/layout/WholeSaleLayout'
+import AdminLayout from '../components/layout/AdminLayout'
+import AdminDashboard from '../pages/Admin/AdminDashboard'
+import AdminProducts from '../pages/Admin/AdminProducts'
+import AdminWholesaleApplications from '../pages/Admin/AdminWholesaleApplications'
+import AdminCategories from '../pages/Admin/AdminCategories'
+import AdminOrders from '../pages/Admin/AdminOrders'
+import AdminWholesaleCustomers from '../pages/Admin/AdminWholesaleCustomers'
+import AdminCustomers from '../pages/Admin/AdminCustomers'
+import AdminInventory from '../pages/Admin/AdminInventory'
+import AdminPayments from '../pages/Admin/AdminPayments'
+import AdminReports from '../pages/Admin/AdminReports'
+import AdminDeliveryReturns from '../pages/Admin/AdminDeliveryReturns'
+import AdminSupport from '../pages/Admin/AdminSupport'
+import AdminSettings from '../pages/Admin/AdminSettings'
 
 export function AppRoutes() {
   return (
@@ -39,6 +53,7 @@ export function AppRoutes() {
       </Route>
 
       {/* WHOLESALE ACCESS - STANDALONE PAGES */}
+      
       <Route
         path="/whole-sale"
         element={<WholesaleAccess />}
@@ -51,6 +66,7 @@ export function AppRoutes() {
 
       {/* WHOLESALE PORTAL - WHOLESALE LAYOUT ONLY */}
       <Route element={<WholesaleLayout />}>
+
         <Route
           path="/whole-sale-dashboard"
           element={<WholesaleDashboard />}
@@ -82,8 +98,47 @@ export function AppRoutes() {
         />
       </Route>
 
+
+      {/* ADMIN PORTAL - ADMIN LAYOUT ONLY */}
+
+    
+<Route element={<AdminLayout />}>
+  <Route path="/admin-dashboard" element={<AdminDashboard />} />
+  <Route path="/admin-products" element={<AdminProducts />} />
+  <Route path="/admin-categories" element={<AdminCategories />} />
+  <Route path="/admin-orders" element={<AdminOrders />} />
+
+  <Route
+    path="/admin-wholesale-applications"
+    element={<AdminWholesaleApplications />}
+  />
+
+  <Route
+    path="/admin-wholesale-customers"
+    element={<AdminWholesaleCustomers />}
+  />
+
+  <Route path="/admin-customers" element={<AdminCustomers />} />
+  <Route path="/admin-inventory" element={<AdminInventory/>} />
+  <Route path="/admin-payments" element={<AdminPayments />} />
+  <Route path="/admin-reports" element={<AdminReports />} />
+  <Route path="/admin-delivery-returns" element={<AdminDeliveryReturns />} />
+  <Route path="/admin-support" element={<AdminSupport />} />
+  <Route path="/admin-settings" element={<AdminSettings />} />
+</Route>
+
+
+
+
+
+
+
       {/* 404 */}
       <Route path="*" element={<NotFound />} />
+
+
+
+
 
     </Routes>
   )
