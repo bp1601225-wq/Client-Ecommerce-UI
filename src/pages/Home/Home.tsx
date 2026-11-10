@@ -87,11 +87,6 @@ const benefits = [
   { icon: Headphones, title: "Customer Support", description: "We're here when you need us" },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 25 },
-  visible: { opacity: 1, y: 0 },
-};
-
 const buttonStyle = {
   backgroundColor: "#000",
   color: "#fd7e02",

@@ -21,7 +21,7 @@ function AppLayout() {
             © {new Date().getFullYear()} MyStore. All rights reserved.
           </p>
         </div>
-      </footer>
+      </footer> 
 
     </div>
   );

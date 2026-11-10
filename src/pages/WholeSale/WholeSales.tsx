@@ -8,7 +8,7 @@ import {
   ShieldCheck,
   CheckCircle2,
 } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -28,6 +28,7 @@ const itemVariants = {
     transition: { duration: 0.5, ease: 'easeOut' as const },
   },
 }
+
 
 export default function WholesaleAccess() {
   const [email, setEmail] = useState('')
@@ -49,8 +50,15 @@ export default function WholesaleAccess() {
     }
   }
 
+
+
+  const navigate = useNavigate()
   return (
-    <div className="min-h-screen bg-[#FAFAFA] flex items-center justify-center px-5 py-12 overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.35 }}
+      className="min-h-screen bg-[#FAFAFA] flex items-center justify-center px-5 py-12 overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 35, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -64,19 +72,35 @@ export default function WholesaleAccess() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="bg-[#111111] text-white p-10 md:p-14 flex flex-col justify-between relative overflow-hidden"
         >
-          <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#fd7e02]/10 rounded-full blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-[#fd7e02]/10 rounded-full blur-3xl" />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.35 }}
+            className="absolute -top-24 -right-24 w-64 h-64 bg-[#fd7e02]/10 rounded-full blur-3xl" />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.35 }}
+            className="absolute -bottom-24 -left-24 w-64 h-64 bg-[#fd7e02]/10 rounded-full blur-3xl" />
 
-          <div className="relative z-10">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.35 }}
+            className="relative z-10">
             <motion.div
               initial={{ opacity: 0, y: -15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35, duration: 0.5 }}
               className="flex items-center gap-3 mb-16"
             >
-              <div className="bg-[#fd7e02] p-2 rounded-lg text-black">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.35 }}
+                className="bg-[#fd7e02] p-2 rounded-lg text-black">
                 <Store size={23} />
-              </div>
+              </motion.div>
 
               <span className="font-bold text-xl tracking-wide">
                 WHOLESALE
@@ -111,7 +135,7 @@ export default function WholesaleAccess() {
               opportunities and special offers reserved for our
               approved business partners.
             </motion.p>
-          </div>
+          </motion.div>
 
           <motion.div
             variants={containerVariants}
@@ -178,12 +202,19 @@ export default function WholesaleAccess() {
             onSubmit={handleSubmit}
             className="space-y-5"
           >
-            <div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.35 }}>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Registered Business Email
               </label>
 
-              <div className="relative">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.35 }}
+                className="relative">
                 <Mail
                   size={19}
                   className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
@@ -191,16 +222,19 @@ export default function WholesaleAccess() {
 
                 <input
                   type="email"
-                  required
+                //   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="business@example.com"
                   className="w-full border border-gray-200 rounded-xl py-4 pl-12 pr-4 outline-none focus:border-[#fd7e02] focus:ring-2 focus:ring-[#fd7e02]/10 transition"
                 />
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             <motion.button
+            onClick={()=>{
+navigate("/whole-sale-dashboard")
+            }}
               whileHover={{
                 scale: 1.02,
                 backgroundColor: '#fd7e02',
@@ -212,6 +246,7 @@ export default function WholesaleAccess() {
               className="w-full bg-[#111111] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-colors disabled:opacity-60"
             >
               {loading ? 'Verifying...' : 'Continue to Wholesale'}
+
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{
@@ -223,6 +258,8 @@ export default function WholesaleAccess() {
                 <ArrowRight size={19} />
               </motion.span>
             </motion.button>
+
+
           </motion.form>
 
           <motion.div
@@ -256,6 +293,6 @@ export default function WholesaleAccess() {
           </motion.p>
         </motion.div>
       </motion.div>
-    </div>
+    </motion.div>
   )
 }

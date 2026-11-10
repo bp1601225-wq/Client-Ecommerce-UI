@@ -90,7 +90,7 @@ function Testimonials() {
 
                 <div>
                   <h3 className="text-sm font-bold text-black">
-                    {item.name}
+                {item.name}
                   </h3>
                   <p className="mt-1 text-xs text-slate-400">
                     {item.role}

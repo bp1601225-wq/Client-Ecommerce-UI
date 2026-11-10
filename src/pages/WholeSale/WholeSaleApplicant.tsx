@@ -6,7 +6,6 @@ import {
   Mail,
   Phone,
   MapPin,
-  Package,
   ArrowRight,
   ShieldCheck,
   CheckCircle2,
@@ -35,30 +34,58 @@ const inputClass =
 
 export default function WholesaleApplication() {
   return (
-    <div className="min-h-screen bg-[#FAFAFA] px-5 py-12">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.35 }}
+      className="min-h-screen bg-[#FAFAFA] px-5 py-12">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="mx-auto max-w-6xl overflow-hidden rounded-2xl border border-gray-100 bg-white"
       >
-        <div className="grid md:grid-cols-[0.85fr_1.15fr]">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.35 }}
+          className="grid md:grid-cols-[0.85fr_1.15fr]">
 
           {/* Left Information Section */}
-          <div className="relative flex flex-col justify-between overflow-hidden bg-[#111111] p-8 text-white md:p-12">
-            <div className="absolute -right-24 -top-20 h-72 w-72 rounded-full bg-[#fd7e02]/10 blur-3xl" />
-            <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-[#fd7e02]/10 blur-3xl" />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.35 }}
+            className="relative flex flex-col justify-between overflow-hidden bg-[#111111] p-8 text-white md:p-12">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.35 }}
+              className="absolute -right-24 -top-20 h-72 w-72 rounded-full bg-[#fd7e02]/10 blur-3xl" />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.35 }}
+              className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-[#fd7e02]/10 blur-3xl" />
 
-            <div className="relative z-10">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.35 }}
+              className="relative z-10">
               <motion.div
                 initial={{ opacity: 0, y: -15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
                 className="mb-16 flex items-center gap-3"
               >
-                <div className="rounded-lg bg-[#fd7e02] p-2 text-black">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.35 }}
+                  className="rounded-lg bg-[#fd7e02] p-2 text-black">
                   <Store size={24} />
-                </div>
+                </motion.div>
                 <span className="text-xl font-bold tracking-wide">
                   WHOLESALE
                 </span>
@@ -118,22 +145,33 @@ export default function WholesaleApplication() {
                   </motion.div>
                 ))}
               </motion.div>
-            </div>
+            </motion.div>
 
-            <div className="relative z-10 mt-16 border-t border-white/10 pt-6">
-              <div className="flex items-center gap-3">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.35 }}
+              className="relative z-10 mt-16 border-t border-white/10 pt-6">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.35 }}
+                className="flex items-center gap-3">
                 <ShieldCheck className="text-[#fd7e02]" size={22} />
-                <div>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.35 }}>
                   <p className="text-sm font-semibold">
                     Application Review
                   </p>
                   <p className="mt-1 text-xs text-gray-400">
                     Access is granted after approval.
                   </p>
-                </div>
-              </div>
-            </div>
-          </div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
 
           {/* Application Form */}
           <motion.div
@@ -143,9 +181,13 @@ export default function WholesaleApplication() {
             className="p-7 md:p-12"
           >
             <motion.div variants={itemVariants} className="mb-8">
-              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-[#FFF1E4]">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.35 }}
+                className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-[#FFF1E4]">
                 <Building2 size={28} className="text-[#fd7e02]" />
-              </div>
+              </motion.div>
 
               <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[#fd7e02]">
                 Wholesale Membership
@@ -169,52 +211,82 @@ export default function WholesaleApplication() {
                   Personal Information
                 </h3>
 
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.35 }}
+                  className="grid gap-4 sm:grid-cols-2">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.35 }}>
                     <label className="mb-2 block text-sm font-semibold text-gray-700">
                       Full Name
                     </label>
-                    <div className="relative">
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.35 }}
+                      className="relative">
                       <User size={17} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                       <input
                         type="text"
                         placeholder="Enter your full name"
                         className={`${inputClass} pl-11`}
                       />
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
 
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.35 }}>
                     <label className="mb-2 block text-sm font-semibold text-gray-700">
                       Phone Number
                     </label>
-                    <div className="relative">
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.35 }}
+                      className="relative">
                       <Phone size={17} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                       <input
                         type="tel"
                         placeholder="e.g. 024 000 0000"
                         className={`${inputClass} pl-11`}
                       />
-                    </div>
-                  </div>
-                </div>
+                    </motion.div>
+                  </motion.div>
+                </motion.div>
 
-                <div className="mt-4">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.35 }}
+                  className="mt-4">
                   <label className="mb-2 block text-sm font-semibold text-gray-700">
                     Business Email Address
                   </label>
-                  <div className="relative">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.35 }}
+                    className="relative">
                     <Mail size={17} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                     <input
                       type="email"
                       placeholder="business@example.com"
                       className={`${inputClass} pl-11`}
                     />
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
               </motion.div>
 
-              <div className="border-t border-gray-100" />
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.35 }}
+                className="border-t border-gray-100" />
 
               {/* Business Information */}
               <motion.div variants={itemVariants}>
@@ -222,23 +294,41 @@ export default function WholesaleApplication() {
                   Business Information
                 </h3>
 
-                <div className="space-y-4">
-                  <div>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.35 }}
+                  className="space-y-4">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.35 }}>
                     <label className="mb-2 block text-sm font-semibold text-gray-700">
                       Business Name
                     </label>
-                    <div className="relative">
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.35 }}
+                      className="relative">
                       <Store size={17} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                       <input
                         type="text"
                         placeholder="Enter your business name"
                         className={`${inputClass} pl-11`}
                       />
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
 
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.35 }}
+                    className="grid gap-4 sm:grid-cols-2">
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.35 }}>
                       <label className="mb-2 block text-sm font-semibold text-gray-700">
                         Business Type
                       </label>
@@ -250,9 +340,12 @@ export default function WholesaleApplication() {
                         <option>Reseller</option>
                         <option>Other</option>
                       </select>
-                    </div>
+                    </motion.div>
 
-                    <div>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.35 }}>
                       <label className="mb-2 block text-sm font-semibold text-gray-700">
                         Expected Order Volume
                       </label>
@@ -263,24 +356,34 @@ export default function WholesaleApplication() {
                         <option>51–100 pairs</option>
                         <option>Above 100 pairs</option>
                       </select>
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
 
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.35 }}>
                     <label className="mb-2 block text-sm font-semibold text-gray-700">
                       Business Location
                     </label>
-                    <div className="relative">
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.35 }}
+                      className="relative">
                       <MapPin size={17} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                       <input
                         type="text"
                         placeholder="City, Region"
                         className={`${inputClass} pl-11`}
                       />
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
 
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.35 }}>
                     <label className="mb-2 block text-sm font-semibold text-gray-700">
                       Tell us about your business
                     </label>
@@ -289,8 +392,8 @@ export default function WholesaleApplication() {
                       placeholder="Briefly describe your business and what you intend to purchase..."
                       className={`${inputClass} resize-none`}
                     />
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
               </motion.div>
 
               {/* Submit */}
@@ -317,8 +420,8 @@ export default function WholesaleApplication() {
               </motion.div>
             </form>
           </motion.div>
-        </div>
+        </motion.div>
       </motion.div>
-    </div>
+    </motion.div>
   )
 }
