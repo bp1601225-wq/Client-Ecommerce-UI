@@ -44,13 +44,13 @@ function DataTable({
              HEADER
           ========================= */
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: "#05101b",
-            borderBottom: "1px solid #e2e8f0",
+            backgroundColor: "#14213D",
+            borderBottom: "1px solid #E2E8F0",
           },
 
           "& .MuiDataGrid-columnHeader": {
-            backgroundColor: "#0706077b",
-            color: "#f8fafd",
+            backgroundColor: "#14213D",
+            color: "#F8FAFC",
             fontSize: "10.5px",
             fontWeight: 700,
             letterSpacing: "0.025em",
@@ -71,7 +71,7 @@ function DataTable({
              SORT ICON
           ========================= */
           "& .MuiDataGrid-sortIcon": {
-            color: "#94a3b8",
+            color: "#CBD5E1",
             fontSize: "16px",
           },
 
@@ -83,21 +83,21 @@ function DataTable({
              ROWS
           ========================= */
           "& .MuiDataGrid-row": {
-            borderBottom: "1px solid #f1f5f9",
+            borderBottom: "1px solid #E2E8F0",
             transition:
               "background-color 0.15s ease, box-shadow 0.15s ease",
           },
 
           "& .MuiDataGrid-row:hover": {
-            backgroundColor: "#f8fafc",
+            backgroundColor: "#F8FAFC",
           },
 
           "& .MuiDataGrid-row.Mui-selected": {
-            backgroundColor: "#eff6ff",
+            backgroundColor: "#EFF6FF",
           },
 
           "& .MuiDataGrid-row.Mui-selected:hover": {
-            backgroundColor: "#eff6ff",
+            backgroundColor: "#EFF6FF",
           },
 
           /* =========================
@@ -122,13 +122,13 @@ function DataTable({
           "& .MuiDataGrid-footerContainer": {
             minHeight: "44px",
             maxHeight: "44px",
-            borderTop: "1px solid #e2e8f0",
+            borderTop: "1px solid #E2E8F0",
             backgroundColor: "#ffffff",
           },
 
           "& .MuiTablePagination-root": {
             fontSize: "11px",
-            color: "#64748b",
+            color: "#64748B",
           },
 
           "& .MuiTablePagination-toolbar": {
@@ -138,7 +138,7 @@ function DataTable({
           "& .MuiTablePagination-selectLabel, & .MuiTablePagination-displayedRows":
             {
               fontSize: "11px",
-              color: "#64748b",
+              color: "#64748B",
             },
 
           "& .MuiTablePagination-select": {
@@ -149,33 +149,33 @@ function DataTable({
              PAGINATION BUTTONS
           ========================= */
           "& .MuiTablePagination-actions button": {
-            color: "#64748b",
+            color: "#64748B",
             transition: "all 0.15s ease",
           },
 
           "& .MuiTablePagination-actions button:hover": {
-            backgroundColor: "#f1f5f9",
-            color: "#0f172a",
+            backgroundColor: "#F8FAFC",
+            color: "#14213D",
           },
 
           "& .MuiTablePagination-actions button.Mui-disabled": {
-            color: "#cbd5e1",
+            color: "#CBD5E1",
           },
 
           /* =========================
              CHECKBOX
           ========================= */
           "& .MuiCheckbox-root": {
-            color: "#cbd5e1",
+            color: "#CBD5E1",
             padding: "5px",
           },
 
           "& .MuiCheckbox-root:hover": {
-            backgroundColor: "#f1f5f9",
+            backgroundColor: "#F8FAFC",
           },
 
           "& .MuiCheckbox-root.Mui-checked": {
-            color: "#1d4ed8",
+            color: "#1D4ED8",
           },
 
           /* =========================
@@ -183,7 +183,7 @@ function DataTable({
           ========================= */
           "& .MuiDataGrid-overlay": {
             backgroundColor: "#ffffff",
-            color: "#64748b",
+            color: "#64748B",
             fontSize: "12px",
           },
 
@@ -199,7 +199,7 @@ function DataTable({
           ========================= */
           "& .MuiDataGrid-virtualScroller": {
             scrollbarWidth: "thin",
-            scrollbarColor: "#cbd5e1 transparent",
+            scrollbarColor: "#CBD5E1 transparent",
           },
 
           "& .MuiDataGrid-virtualScroller::-webkit-scrollbar": {
@@ -208,7 +208,7 @@ function DataTable({
           },
 
           "& .MuiDataGrid-virtualScroller::-webkit-scrollbar-thumb": {
-            backgroundColor: "#cbd5e1",
+            backgroundColor: "#CBD5E1",
             borderRadius: "10px",
           },
 
@@ -220,7 +220,7 @@ function DataTable({
              COLUMN SEPARATOR
           ========================= */
           "& .MuiDataGrid-columnSeparator": {
-            color: "#e2e8f0",
+            color: "#E2E8F0",
             opacity: 0.5,
           },
 
@@ -228,12 +228,12 @@ function DataTable({
              MENU
           ========================= */
           "& .MuiDataGrid-menuIconButton": {
-            color: "#94a3b8",
+            color: "#94A3B8",
           },
 
           "& .MuiDataGrid-menuIconButton:hover": {
             color: "#334155",
-            backgroundColor: "#f1f5f9",
+            backgroundColor: "#F8FAFC",
           },
         }}
       />

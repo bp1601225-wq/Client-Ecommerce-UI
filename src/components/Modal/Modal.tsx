@@ -28,7 +28,7 @@ function ModalOpen({
       isOpen={isOpen}
       onRequestClose={onClose}
       className="relative z-[99999] outline-none"
-      overlayClassName="fixed inset-0 z-[99999] flex items-center justify-center bg-black/40 p-4"
+      overlayClassName="fixed inset-0 z-[99999] flex items-center justify-center bg-[#14213D]/40 p-4"
     >
       <motion.div
         initial={{
@@ -45,18 +45,18 @@ function ModalOpen({
           duration: 0.25,
           ease: "easeOut",
         }}
-        className={`relative z-[100000] flex max-h-[90vh] flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-xl ${modalClassName}`}
+        className={`relative z-[100000] flex max-h-[90vh] flex-col overflow-hidden rounded-lg border border-[#E2E8F0] bg-white shadow-xl ${modalClassName}`}
       >
         {/* HEADER */}
         {showHeader && (
-          <div className="flex shrink-0 items-center justify-between border-b border-gray-200 px-4 py-3">
-            <h2 className="text-sm font-semibold text-black">
+          <div className="flex shrink-0 items-center justify-between border-b border-[#E2E8F0] px-4 py-3">
+            <h2 className="text-sm font-semibold text-[#14213D]">
               {title}
             </h2>
 
             <Button
               onClick={onClose}
-              className="min-w-0 text-gray-500 hover:text-black"
+              className="min-w-0 text-[#64748B] hover:text-[#14213D]"
             >
               <X size={16} />
             </Button>

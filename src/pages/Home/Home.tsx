@@ -12,6 +12,7 @@ import {
   ShieldCheck,
   Headphones,
 } from "lucide-react";
+import Testimonials from "../Testimonials/Testimonial";
 
 const categories = [
   {
@@ -86,13 +87,35 @@ const benefits = [
   { icon: Headphones, title: "Customer Support", description: "We're here when you need us" },
 ];
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 25 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const buttonStyle = {
+  backgroundColor: "#000",
+  color: "#fd7e02",
+  textTransform: "none" as const,
+  fontWeight: 700,
+  borderRadius: "8px",
+  px: 3.5,
+  py: 1.5,
+  boxShadow: "none",
+  transition: "all 0.3s ease",
+  "&:hover": {
+    backgroundColor: "#fd7e02",
+    color: "#000",
+    boxShadow: "none",
+  },
+};
+
 function Home() {
   return (
-    <div className="overflow-hidden bg-white text-slate-900">
+    <div className="overflow-hidden bg-white text-[#171717]">
 
       {/* HERO */}
       <section className="mx-auto max-w-[1440px] px-5 pt-8 md:px-10 md:pt-12">
-        <div className="relative grid min-h-[520px] overflow-hidden rounded-2xl bg-[#f5f4f0] md:grid-cols-2 md:items-center">
+        <div className="relative grid min-h-[520px] overflow-hidden rounded-2xl bg-[#fafafa] md:grid-cols-2 md:items-center">
 
           <motion.div
             initial={{ opacity: 0, x: -25 }}
@@ -100,61 +123,51 @@ function Home() {
             transition={{ duration: 0.7 }}
             className="relative z-10 px-7 py-14 md:px-14 md:py-20"
           >
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-600">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#fd7e02]">
               A better shopping experience
             </span>
 
-            <h1 className="mt-7 max-w-xl text-5xl font-semibold leading-[1.12] tracking-tight text-[#14213d] md:text-6xl lg:text-7xl">
+            <h1 className="mt-7 max-w-xl text-5xl font-extrabold leading-[1.12] tracking-tight text-black md:text-6xl lg:text-7xl">
               Find what you love.
-              <span className="block font-light text-orange-600">
+              <span className="block font-light text-[#fd7e02]">
                 Love what you find.
               </span>
             </h1>
 
-            <p className="mt-7 max-w-md text-sm leading-7 text-slate-600 md:text-base">
+            <p className="mt-7 max-w-md text-sm leading-7 text-slate-500 md:text-base">
               Discover thoughtfully selected products for everyday living.
               Quality, style and convenience come together in one place.
             </p>
 
-            <div className="mt-9 flex flex-wrap items-center gap-4">
+            <div className="mt-9 flex flex-wrap items-center gap-5">
               <Button
                 component={Link}
                 to="/products"
                 variant="contained"
                 endIcon={<ArrowUpRight size={17} />}
-                sx={{
-                  px: 3.5,
-                  py: 1.5,
-                  borderRadius: "6px",
-                  backgroundColor: "#fd7e02",
-                  textTransform: "none",
-                  fontWeight: 600,
-                  boxShadow: "none",
-                  "&:hover": {
-                    backgroundColor: "#e66f00",
-                    boxShadow: "none",
-                  },
-                }}
+                sx={buttonStyle}
               >
                 Explore Collection
               </Button>
 
               <Link
                 to="/categories"
-                className="text-sm font-semibold text-[#14213d] hover:text-orange-600"
+                className="text-sm font-bold text-black transition hover:text-[#fd7e02]"
               >
                 Browse categories
               </Link>
             </div>
 
-            <div className="mt-12 flex items-center gap-8 border-t border-slate-300/70 pt-7">
+            <div className="mt-12 flex items-center gap-8 border-t border-slate-200 pt-7">
               <div>
-                <p className="text-lg font-semibold text-[#14213d]">Quality</p>
+                <p className="text-lg font-bold text-black">Quality</p>
                 <p className="mt-1 text-xs text-slate-500">Everyday essentials</p>
               </div>
-              <div className="h-9 w-px bg-slate-300" />
+
+              <div className="h-9 w-px bg-slate-200" />
+
               <div>
-                <p className="text-lg font-semibold text-[#14213d]">Value</p>
+                <p className="text-lg font-bold text-black">Value</p>
                 <p className="mt-1 text-xs text-slate-500">Shopping made better</p>
               </div>
             </div>
@@ -171,13 +184,14 @@ function Home() {
               alt="A curated shopping collection"
               className="absolute inset-0 h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent md:bg-gradient-to-r md:from-[#f5f4f0]/10 md:to-transparent" />
 
-            <div className="absolute bottom-7 right-7 rounded-lg bg-white/95 px-5 py-4 backdrop-blur">
-              <p className="text-[10px] font-semibold uppercase tracking-widest text-orange-600">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent md:bg-gradient-to-r md:from-[#fafafa]/10 md:to-transparent" />
+
+            <div className="absolute bottom-7 right-7 rounded-xl border border-white/30 bg-white/95 px-5 py-4 backdrop-blur">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-[#fd7e02]">
                 Discover more
               </p>
-              <p className="mt-1 text-sm font-semibold text-[#14213d]">
+              <p className="mt-1 text-sm font-bold text-black">
                 Your next favourite find.
               </p>
             </div>
@@ -187,7 +201,7 @@ function Home() {
 
       {/* BENEFITS */}
       <section className="mx-auto max-w-[1440px] px-5 py-12 md:px-10">
-        <div className="grid grid-cols-2 gap-7 border-b border-slate-100 pb-12 md:grid-cols-4 md:gap-5 animate-bounce">
+        <div className="grid grid-cols-2 gap-7 border-b border-slate-200 pb-12 md:grid-cols-4 md:gap-5">
           {benefits.map((item, index) => (
             <motion.div
               key={item.title}
@@ -197,14 +211,13 @@ function Home() {
               transition={{ delay: index * 0.08 }}
               className="flex items-start gap-3"
             >
-              <item.icon size={21} className="mt-1 shrink-0 text-orange-600" />
+              <item.icon size={22} className="mt-1 shrink-0 text-[#fd7e02]" />
               <div>
-                <h3 className="text-sm font-semibold text-[#14213d]">
+                <h3 className="text-sm font-bold text-black">
                   {item.title}
                 </h3>
                 <p className="mt-1 text-xs leading-5 text-slate-500">
                   {item.description}
-
                 </p>
               </div>
             </motion.div>
@@ -216,10 +229,10 @@ function Home() {
       <section className="mx-auto max-w-[1440px] px-5 py-12 md:px-10 md:py-16">
         <div className="mb-9 flex items-end justify-between">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-orange-600">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#fd7e02]">
               Explore the store
             </p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#14213d] md:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-black md:text-4xl">
               Shop by category
             </h2>
             <p className="mt-2 text-sm text-slate-500">
@@ -229,7 +242,7 @@ function Home() {
 
           <Link
             to="/categories"
-            className="hidden items-center gap-2 text-sm font-semibold text-[#14213d] hover:text-orange-600 sm:flex"
+            className="hidden items-center gap-2 text-sm font-bold text-black transition hover:text-[#fd7e02] sm:flex"
           >
             All categories <ArrowRight size={16} />
           </Link>
@@ -245,23 +258,28 @@ function Home() {
               transition={{ delay: index * 0.1 }}
             >
               <Link to="/categories" className="group block">
-                <div className="relative overflow-hidden rounded-lg bg-slate-100">
+                <div className="relative overflow-hidden rounded-xl bg-slate-100">
                   <img
                     src={category.image}
                     alt={category.name}
                     className="h-52 w-full object-cover transition duration-700 group-hover:scale-105 md:h-72"
                   />
-                  <div className="absolute inset-0 bg-black/10 transition group-hover:bg-black/25" />
+
+                  <div className="absolute inset-0 bg-black/15 transition group-hover:bg-black/30" />
+
                   <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                    <span className="text-base font-semibold text-white">
+                    <span className="text-base font-bold text-white">
                       {category.name}
                     </span>
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#14213d] transition group-hover:bg-orange-500 group-hover:text-white">
-                      <ArrowUpRight size={16} />
+
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-black transition group-hover:bg-[#fd7e02] group-hover:text-black">
+                      <ArrowUpRight size={17} />
                     </span>
                   </div>
                 </div>
-                <p className="mt-3 text-xs text-slate-500">{category.count}</p>
+                <p className="mt-3 text-xs font-medium text-slate-500">
+                  {category.count}
+                </p>
               </Link>
             </motion.div>
           ))}
@@ -269,14 +287,14 @@ function Home() {
       </section>
 
       {/* PRODUCTS */}
-      <section className="bg-[#f8f8f6] py-16 md:py-20">
+      <section className="bg-[#fafafa] py-16 md:py-20">
         <div className="mx-auto max-w-[1440px] px-5 md:px-10">
           <div className="mb-10 flex items-end justify-between">
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-orange-600">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#fd7e02]">
                 Curated for you
               </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#14213d] md:text-4xl">
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-black md:text-4xl">
                 Featured products
               </h2>
               <p className="mt-2 text-sm text-slate-500">
@@ -286,7 +304,7 @@ function Home() {
 
             <Link
               to="/products"
-              className="hidden items-center gap-2 text-sm font-semibold text-[#14213d] hover:text-orange-600 sm:flex"
+              className="hidden items-center gap-2 text-sm font-bold text-black transition hover:text-[#fd7e02] sm:flex"
             >
               View all products <ArrowRight size={16} />
             </Link>
@@ -302,50 +320,51 @@ function Home() {
                 transition={{ delay: index * 0.08 }}
                 className="group"
               >
-                <div className="relative overflow-hidden rounded-lg bg-white">
+                <div className="relative overflow-hidden rounded-xl bg-white">
                   <img
                     src={product.image}
                     alt={product.name}
                     className="h-48 w-full object-cover transition duration-700 group-hover:scale-105 md:h-72"
                   />
 
-                  <span className="absolute left-3 top-3 bg-white px-2.5 py-1.5 text-[9px] font-semibold tracking-wider text-[#14213d]">
+                  <span className="absolute left-3 top-3 rounded-md bg-black px-2.5 py-1.5 text-[9px] font-bold tracking-wider text-[#fd7e02]">
                     {product.label}
                   </span>
 
                   <button
                     type="button"
                     aria-label={`Add ${product.name} to favourites`}
-                    className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white text-slate-600 transition hover:text-orange-600"
+                    className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white text-black transition hover:bg-[#fd7e02]"
                   >
                     <Heart size={16} />
                   </button>
 
                   <Link
                     to="/products"
-                    className="absolute bottom-3 left-3 right-3 translate-y-3 bg-white/95 py-3 text-center text-xs font-semibold text-[#14213d] opacity-0 transition duration-300 hover:bg-orange-500 hover:text-white group-hover:translate-y-0 group-hover:opacity-100"
+                    className="absolute bottom-3 left-3 right-3 translate-y-3 rounded-lg bg-black/95 py-3 text-center text-xs font-bold text-[#fd7e02] opacity-0 transition duration-300 hover:bg-[#fd7e02] hover:text-black group-hover:translate-y-0 group-hover:opacity-100"
                   >
                     View product
                   </Link>
                 </div>
 
                 <div className="pt-4">
-                  <p className="text-[10px] uppercase tracking-widest text-slate-400">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-[#fd7e02]">
                     {product.category}
                   </p>
-                  <h3 className="mt-2 text-sm font-semibold text-[#14213d]">
+
+                  <h3 className="mt-2 text-sm font-bold text-black">
                     {product.name}
                   </h3>
 
                   <div className="mt-2 flex items-center gap-1">
-                    <Star size={12} className="fill-orange-400 text-orange-400" />
+                    <Star size={12} className="fill-[#fd7e02] text-[#fd7e02]" />
                     <span className="text-xs text-slate-500">
                       {product.rating}
                     </span>
                   </div>
 
                   <div className="mt-3 flex flex-wrap items-center gap-2">
-                    <span className="text-sm font-bold text-[#14213d]">
+                    <span className="text-sm font-extrabold text-black">
                       GH₵{product.price.toLocaleString()}
                     </span>
                     <span className="text-xs text-slate-400 line-through">
@@ -361,13 +380,8 @@ function Home() {
             <Button
               component={Link}
               to="/products"
-              variant="outlined"
-              sx={{
-                borderColor: "#14213d",
-                color: "#14213d",
-                textTransform: "none",
-                px: 4,
-              }}
+              variant="contained"
+              sx={buttonStyle}
             >
               View all products
             </Button>
@@ -375,19 +389,24 @@ function Home() {
         </div>
       </section>
 
+
+{/* TESTIMONIALS */}
+
+<Testimonials />
+
       {/* PROMOTIONAL SECTION */}
       <section className="mx-auto max-w-[1440px] px-5 py-16 md:px-10 md:py-20">
-        <div className="grid overflow-hidden rounded-xl bg-[#14213d] md:grid-cols-2">
+        <div className="grid overflow-hidden rounded-2xl bg-black md:grid-cols-2">
           <div className="flex flex-col justify-center px-7 py-12 md:px-14 md:py-16">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-orange-400">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#fd7e02]">
               Make every purchase count
             </p>
 
-            <h2 className="mt-5 max-w-lg text-3xl font-semibold leading-tight text-white md:text-5xl">
+            <h2 className="mt-5 max-w-lg text-3xl font-extrabold leading-tight text-white md:text-5xl">
               Good choices begin with great finds.
             </h2>
 
-            <p className="mt-5 max-w-md text-sm leading-7 text-slate-300">
+            <p className="mt-5 max-w-md text-sm leading-7 text-slate-400">
               Discover a collection of products selected to make
               everyday shopping simpler and more enjoyable.
             </p>
@@ -398,18 +417,7 @@ function Home() {
                 to="/products"
                 variant="contained"
                 endIcon={<ArrowUpRight size={17} />}
-                sx={{
-                  backgroundColor: "#fd7e02",
-                  textTransform: "none",
-                  borderRadius: "5px",
-                  px: 3,
-                  py: 1.4,
-                  boxShadow: "none",
-                  "&:hover": {
-                    backgroundColor: "#e66f00",
-                    boxShadow: "none",
-                  },
-                }}
+                sx={buttonStyle}
               >
                 Discover more
               </Button>

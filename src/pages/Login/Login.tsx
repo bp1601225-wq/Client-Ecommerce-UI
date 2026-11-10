@@ -99,16 +99,16 @@ const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
                   mb-3 inline-flex
                   items-center gap-2
                   rounded-full
-                  bg-amber-50
+                  bg-[#EFF6FF]
                   px-3 py-1.5
                   text-[10px]
                   font-bold
                   uppercase
                   tracking-widest
-                  text-amber-700
+                  text-[#1D4ED8]
                 "
               >
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="h-1.5 w-1.5 rounded-full bg-[#1D4ED8]" />
 
                 Welcome back
               </div>
@@ -199,7 +199,7 @@ const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
                       font-semibold
                       text-blue-600
                       transition
-                      hover:text-amber-600
+                      hover:text-[#1D4ED8]
                     "
                   >
                     Forgot password?
@@ -215,7 +215,7 @@ const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
                       pointer-events-none
                       absolute left-3.5 top-1/2
                       -translate-y-1/2
-                      text-amber-500
+                      text-blue-500
                     "
                   />
 
@@ -238,10 +238,10 @@ const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
                       outline-none
                       transition
                       placeholder:text-black/25
-                      hover:border-amber-200
-                      focus:border-amber-500
+                      hover:border-blue-200
+                      focus:border-blue-500
                       focus:ring-4
-                      focus:ring-amber-500/10
+                      focus:ring-blue-500/10
                     "
                   />
 
@@ -349,7 +349,7 @@ const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
                   font-semibold
                   text-blue-600
                   transition
-                  hover:text-amber-600
+                  hover:text-[#1D4ED8]
                 "
               >
                 Create account

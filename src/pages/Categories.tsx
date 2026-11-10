@@ -19,9 +19,10 @@ export const categories = [
 
 function CategoriesPage() {
   return (
-    <main className="bg-[#faf9f6] min-h-screen">
+    <main className="min-h-screen bg-white">
+
       {/* Hero */}
-      <section className="mx-auto max-w-7xl px-5 pt-16 pb-12 md:px-10 md:pt-24 md:pb-16">
+      <section className="mx-auto max-w-7xl px-5 pb-12 pt-16 md:px-10 md:pb-16 md:pt-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -32,9 +33,9 @@ function CategoriesPage() {
             Explore our collection
           </span>
 
-          <h1 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-[#14213d] md:text-6xl">
+          <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-black md:text-6xl">
             Style begins with
-            <span className="block font-serif italic font-normal text-[#fd7e02]">
+            <span className="block font-serif font-normal italic text-[#fd7e02]">
               the right choice.
             </span>
           </h1>
@@ -60,7 +61,7 @@ function CategoriesPage() {
             >
               <Link
                 to={`/products?category=${encodeURIComponent(category.name)}`}
-                className="relative block overflow-hidden rounded-2xl bg-white"
+                className="relative block overflow-hidden rounded-2xl bg-slate-100"
               >
                 <div className="relative h-[360px] overflow-hidden sm:h-[460px]">
                   <img
@@ -69,23 +70,24 @@ function CategoriesPage() {
                     className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#101827]/75 via-[#101827]/10 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
 
-                  <span className="absolute left-6 top-6 rounded-full border border-white/40 bg-white/15 px-4 py-2 text-[10px] font-semibold tracking-[0.2em] text-white backdrop-blur-md">
+                  <span className="absolute left-6 top-6 rounded-full border border-white/40 bg-black/30 px-4 py-2 text-[10px] font-semibold tracking-[0.2em] text-white backdrop-blur-md">
                     COLLECTION {category.number}
                   </span>
 
                   <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-6 sm:p-8">
                     <div className="max-w-sm">
-                      <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                      <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
                         {category.name}
                       </h2>
+
                       <p className="mt-3 text-sm leading-6 text-white/80">
                         {category.description}
                       </p>
                     </div>
 
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-[#14213d] transition-all duration-300 group-hover:bg-[#fd7e02] group-hover:text-white">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-black transition-all duration-300 group-hover:bg-[#fd7e02] group-hover:text-black">
                       <ArrowUpRight size={21} />
                     </span>
                   </div>
@@ -93,12 +95,13 @@ function CategoriesPage() {
               </Link>
 
               <div className="mt-4 flex items-center justify-between px-1">
-                <span className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400">
+                <span className="text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
                   Discover the collection
                 </span>
+
                 <Link
                   to={`/products?category=${encodeURIComponent(category.name)}`}
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#14213d] transition-colors hover:text-[#fd7e02]"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-black transition-colors hover:text-[#fd7e02]"
                 >
                   Shop now <ArrowRight size={16} />
                 </Link>
@@ -108,32 +111,32 @@ function CategoriesPage() {
         </div>
       </section>
 
-
       {/* Bottom Collection Message */}
-<section className="border-t border-slate-200/70 bg-white">
-  <div className="mx-auto max-w-4xl px-5 py-16 text-center md:py-20">
-    <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#fd7e02]">
-      A little something for you
-    </span>
+      <section className="border-t border-slate-200 bg-[#fafafa]">
+        <div className="mx-auto max-w-4xl px-5 py-16 text-center md:py-20">
+          <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#fd7e02]">
+            A little something for you
+          </span>
 
-    <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[#14213d] md:text-4xl">
-      Your style, your statement.
-    </h2>
+          <h2 className="mt-4 text-3xl font-bold tracking-tight text-black md:text-4xl">
+            Your style, your statement.
+          </h2>
 
-    <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-slate-500 md:text-base">
-      From beautiful handbags to elegant ladies’ shoes, find pieces
-      that bring confidence and personality to every look.
-    </p>
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-slate-500 md:text-base">
+            From beautiful handbags to elegant ladies’ shoes, find pieces
+            that bring confidence and personality to every look.
+          </p>
 
-    <Link
-      to="/products"
-      className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#14213d] px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#fd7e02]"
-    >
-      Explore all products
-      <ArrowUpRight size={17} />
-    </Link>
-  </div>
-</section>
+          <Link
+            to="/products"
+            className="mt-8 inline-flex items-center gap-3 rounded-lg bg-black px-7 py-3.5 text-sm font-semibold text-amber-500 transition-all duration-300 hover:bg-[#fd7e02] hover:text-black"
+          >
+            Explore all products
+            <ArrowUpRight size={17} />
+          </Link>
+        </div>
+      </section>
+
     </main>
   )
 }

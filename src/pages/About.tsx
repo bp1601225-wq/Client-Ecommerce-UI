@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion'
 import {
   HeartHandshake,
@@ -37,7 +36,7 @@ function AboutPage() {
     <main className="bg-white">
 
       {/* Hero */}
-      <section className="bg-[#f8f7f4]">
+      <section className="bg-[#fafafa]">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 md:px-10 md:py-24 lg:grid-cols-2">
 
           <motion.div
@@ -45,11 +44,11 @@ function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#fd7e02]">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#fd7e02]">
               A little about us
             </p>
 
-            <h1 className="mt-6 max-w-xl text-4xl font-semibold leading-[1.15] tracking-tight text-[#14213d] md:text-6xl">
+            <h1 className="mt-6 max-w-xl text-4xl font-bold leading-[1.15] tracking-tight text-black md:text-6xl">
               Good finds.
               <span className="block text-[#fd7e02]">
                 Better shopping.
@@ -57,7 +56,7 @@ function AboutPage() {
             </h1>
 
             <p className="mt-7 max-w-lg text-base leading-8 text-slate-600">
-              Welcome to MyStore. We created this store to make finding
+              Welcome to MachLuxe. We created this store to make finding
               the things you need a little easier. From everyday essentials
               to products that add something special to your lifestyle,
               we bring a carefully selected range together in one place.
@@ -71,13 +70,14 @@ function AboutPage() {
 
             <Link
               to="/products"
-              className="mt-9 inline-flex items-center gap-3 rounded-lg bg-[#14213d] px-6 py-3.5 text-sm font-medium text-white transition hover:bg-[#fd7e02]"
+              className="mt-9 inline-flex items-center gap-3 rounded-lg bg-black px-6 py-3.5 text-sm font-semibold text-[#fd7e02] transition duration-300 hover:bg-[#fd7e02] hover:text-black"
             >
               Browse our collection
               <ArrowRight size={17} />
             </Link>
           </motion.div>
 
+          {/* Hero Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -90,13 +90,14 @@ function AboutPage() {
               className="h-[350px] w-full rounded-2xl object-cover md:h-[470px]"
             />
 
-            <div className="absolute -bottom-5 left-5 rounded-xl bg-white px-6 py-5 md:left-10">
-              <p className="text-xs text-slate-400">
+            <div className="absolute -bottom-5 left-5 rounded-xl border border-slate-100 bg-white px-6 py-5 md:left-10">
+              <p className="text-xs text-slate-500">
                 What matters to us
               </p>
-              <p className="mt-1 text-lg font-semibold text-[#14213d]">
+              <p className="mt-1 text-lg font-bold text-black">
                 Quality, value and care.
               </p>
+              <div className="mt-2 h-1 w-12 rounded-full bg-[#fd7e02]" />
             </div>
           </motion.div>
         </div>
@@ -107,11 +108,11 @@ function AboutPage() {
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-24">
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#fd7e02]">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#fd7e02]">
               Why we are here
             </p>
 
-            <h2 className="mt-5 max-w-md text-3xl font-semibold leading-tight tracking-tight text-[#14213d] md:text-4xl">
+            <h2 className="mt-5 max-w-md text-3xl font-bold leading-tight tracking-tight text-black md:text-4xl">
               Shopping should be simple. Finding something you love should be even better.
             </h2>
           </div>
@@ -131,7 +132,7 @@ function AboutPage() {
             </p>
 
             <p>
-              MyStore is built around the people who shop with us.
+              MachLuxe is built around the people who shop with us.
               Your experience matters, and we want you to leave with
               confidence in what you have purchased.
             </p>
@@ -140,15 +141,15 @@ function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="bg-[#f8f7f4] py-20 md:py-24">
+      <section className="bg-[#fafafa] py-20 md:py-24">
         <div className="mx-auto max-w-7xl px-5 md:px-10">
 
           <div className="mx-auto mb-14 max-w-2xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#fd7e02]">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#fd7e02]">
               What you can expect
             </p>
 
-            <h2 className="mt-5 text-3xl font-semibold tracking-tight text-[#14213d] md:text-4xl">
+            <h2 className="mt-5 text-3xl font-bold tracking-tight text-black md:text-4xl">
               The little things that make a difference.
             </h2>
 
@@ -167,13 +168,14 @@ function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="rounded-xl border border-[#eae8e2] bg-white p-7 transition duration-300 hover:-translate-y-1 hover:border-orange-200"
+                whileHover={{ y: -5 }}
+                className="rounded-xl border border-slate-200 bg-white p-7 transition duration-300 hover:border-[#fd7e02]/50"
               >
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-orange-50 text-[#fd7e02]">
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#fff3e6] text-[#fd7e02]">
                   <Icon size={21} strokeWidth={1.7} />
                 </div>
 
-                <h3 className="mt-6 text-lg font-semibold text-[#14213d]">
+                <h3 className="mt-6 text-lg font-bold text-black">
                   {title}
                 </h3>
 
@@ -188,12 +190,13 @@ function AboutPage() {
 
       {/* Closing Section */}
       <section className="px-5 py-20 md:px-10 md:py-24">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-2xl bg-[#14213d] px-7 py-16 text-center md:px-16">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-300">
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-2xl bg-black px-7 py-16 text-center md:px-16">
+
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#fd7e02]">
             Ready to explore?
           </p>
 
-          <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-semibold leading-tight text-white md:text-4xl">
+          <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-bold leading-tight text-white md:text-4xl">
             Your next favourite find could be here.
           </h2>
 
@@ -204,7 +207,7 @@ function AboutPage() {
 
           <Link
             to="/products"
-            className="mt-8 inline-flex items-center gap-3 rounded-lg bg-[#fd7e02] px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-white hover:text-[#14213d]"
+            className="mt-8 inline-flex items-center gap-3 rounded-lg bg-[#fd7e02] px-7 py-3.5 text-sm font-bold text-black transition duration-300 hover:bg-white"
           >
             Explore products
             <ArrowRight size={17} />

@@ -18,9 +18,9 @@ function RightPanel({
       {/* Backdrop */}
       <div
         onClick={onClose}
-        className={`s
+        className={`
           fixed inset-0
-          bg-black/30
+          bg-[#14213D]/30
           z-[100]
           transition-opacity duration-300
           ${
@@ -40,10 +40,7 @@ function RightPanel({
           sm:w-[90%]
           md:w-[80%]
           lg:w-[65%]
-          bg-gradient-to-bl
-          from-amber-50
-          via-white
-          to-white
+          bg-[#FFFFFF]
           shadow-2xl
           z-[110]
           transition-transform
@@ -57,8 +54,8 @@ function RightPanel({
         `}
       >
         {/* Panel Header */}
-        <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
-          <h2 className="text-lg font-semibold text-gray-800">
+        <div className="flex items-center justify-between border-b border-[#E2E8F0] px-6 py-4">
+          <h2 className="text-lg font-semibold text-[#14213D]">
             {title}
           </h2>
 
@@ -69,9 +66,9 @@ function RightPanel({
               flex items-center justify-center
               rounded-md
               p-2
-              text-gray-500
-              hover:bg-gray-100
-              hover:text-gray-800
+              text-[#64748B]
+              hover:bg-[#F8FAFC]
+              hover:text-[#14213D]
               transition-colors
             "
           >

@@ -32,7 +32,7 @@ function SubmissionDetails() {
           </div>
         </div>
 
-        <span className="rounded-full bg-amber-50 px-2.5 py-1 text-[10px] font-medium text-amber-700">
+        <span className="rounded-full bg-[#EFF6FF] px-2.5 py-1 text-[10px] font-medium text-[#1D4ED8]">
           UNDER REVIEW
         </span>
       </div>
