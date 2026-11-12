@@ -5,7 +5,7 @@ import AdminHeader from '../../pages/Admin/Header'
 
 function AdminLayout() {
   return (
-    <div className="flex h-screen flex-col overflow-hidden bg-white">
+    <div className="flex h-screen flex-col overflow-hidden ">
 
       {/* Admin Header - Full Width */}
       <AdminHeader />

@@ -1,43 +1,66 @@
-export interface DeliverablesType {
-    id?:string
-    title:string,
-    verificationMethod?:string
-    dueDate?:string
-}
 
-export interface SubmissionForm {
-  userId:string
-  deliverables: DeliverablesType[];
-  supportNeeded?: string;
-}
+// =========================
+// USER
+// =========================
 
-export interface UnitType {
+export interface User {
   id?: string;
-  name: string;
-  description?: string;
-
-}
-
-export interface PositionType {
-  id: string;
-  name: string;
-  description?: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface StaffFormData  {
-  id?:string
-  name: string;
+  fullName: string;
   email: string;
-  phone: string;
-  positionId: string;
-  unitId: string;
+  phoneNumber: string;
   role: string;
-  password: string;
-  confirmPassword?: string;
-};
+  accountStatus: string;
+  passwordHash?: string;
 
-export interface DeliverablesComments {
-  comments: string
+  businessName?: string;
+  businessType?: string;
+  expectedOrderVolume?: string;
+  businessLocation?: string;
+  businessDescription?: string;
+
+  isEmailVerified?: boolean;
+  isActive?: boolean;
+
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+// =========================
+// REGISTER USER
+// =========================
+
+export interface RegisterUser {
+  fullName: string;
+  email: string;
+  phoneNumber: string;
+  password: string;
+
+  businessName?: string;
+  businessType?: string;
+  expectedOrderVolume?: string;
+  businessLocation?: string;
+  businessDescription?: string;
+}
+
+// =========================
+// LOGIN
+// =========================
+
+export interface Login {
+  email: string;
+  password: string;
+}
+
+// =========================
+// LOGS
+// =========================
+
+export interface Logs {
+  id?: string;
+  userId?: string | null;
+  description?: string | null;
+  status: string;
+  ipAddress?: string | null;
+  userAgent?: string | null;
+  loggedAt?: string;
 }

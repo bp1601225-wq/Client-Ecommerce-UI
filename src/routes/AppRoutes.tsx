@@ -37,6 +37,7 @@ import AdminReports from '../pages/Admin/AdminReports'
 import AdminDeliveryReturns from '../pages/Admin/AdminDeliveryReturns'
 import AdminSupport from '../pages/Admin/AdminSupport'
 import AdminSettings from '../pages/Admin/AdminSettings'
+import AdminLogin from '../pages/Admin/Login'
 
 export function AppRoutes() {
   return (
@@ -101,8 +102,11 @@ export function AppRoutes() {
 
       {/* ADMIN PORTAL - ADMIN LAYOUT ONLY */}
 
+<Route path='/login' element={<AdminLogin />} />
     
 <Route element={<AdminLayout />}>
+
+
   <Route path="/admin-dashboard" element={<AdminDashboard />} />
   <Route path="/admin-products" element={<AdminProducts />} />
   <Route path="/admin-categories" element={<AdminCategories />} />
