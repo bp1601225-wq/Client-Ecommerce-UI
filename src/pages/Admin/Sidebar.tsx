@@ -19,6 +19,7 @@ Store,
 ChevronLeft,
 ChevronRight,
 ShieldAlert,
+Users2Icon,
 } from 'lucide-react'
 import { useState } from 'react'
 
@@ -37,14 +38,13 @@ items: [
 },
 
 {
-title: 'STORE MANAGEMENT',
+title: 'User Creation',
 items: [
-{ name: 'Products', path: '/admin-products', icon: Package },
-{ name: 'Categories', path: '/admin-categories', icon: Tags },
-{ name: 'Orders', path: '/admin-orders', icon: ShoppingBag },
-{ name: 'Inventory', path: '/admin-inventory', icon: Boxes },
+{ name: 'users', path: '/admin-users', icon: Users2Icon },
 ],
 },
+
+
 
 {
 title: 'WHOLESALE MANAGEMENT',
@@ -90,7 +90,7 @@ icon: Truck,
 title: 'SYSTEM LOGS',
 items: [
 
-{ name: 'Logs', path: '/admin-settings', icon: ShieldAlert },
+{ name: 'Logs', path: '/system-logs', icon: ShieldAlert },
 ],
 },
 ]

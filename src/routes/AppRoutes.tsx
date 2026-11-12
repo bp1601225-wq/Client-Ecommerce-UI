@@ -38,6 +38,8 @@ import AdminDeliveryReturns from '../pages/Admin/AdminDeliveryReturns'
 import AdminSupport from '../pages/Admin/AdminSupport'
 import AdminSettings from '../pages/Admin/AdminSettings'
 import AdminLogin from '../pages/Admin/Login'
+import CreateUser from '../pages/Admin/AdminCreateUser'
+import Logs from '../pages/Login/LoginLogs'
 
 export function AppRoutes() {
   return (
@@ -103,6 +105,7 @@ export function AppRoutes() {
       {/* ADMIN PORTAL - ADMIN LAYOUT ONLY */}
 
 <Route path='/login' element={<AdminLogin />} />
+ 
     
 <Route element={<AdminLayout />}>
 
@@ -129,6 +132,9 @@ export function AppRoutes() {
   <Route path="/admin-delivery-returns" element={<AdminDeliveryReturns />} />
   <Route path="/admin-support" element={<AdminSupport />} />
   <Route path="/admin-settings" element={<AdminSettings />} />
+  <Route path="/system-logs" element={< Logs/>} />
+  <Route path="/admin-users" element={<CreateUser />} />
+
 </Route>
 
 

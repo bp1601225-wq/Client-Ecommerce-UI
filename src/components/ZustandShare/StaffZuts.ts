@@ -1,14 +1,14 @@
 import {create} from "zustand"
-import type { StaffFormData } from "../../GlobalTypes"
+import type {  UserType } from "../../GlobalTypes"
 import API, { handleAxiosError } from "../configuration/API"
 import { toast } from "sonner"
 
 
 type StaffType = {
 
-Staff: StaffFormData[],
+Staff: UserType[],
 GetStaff: () => Promise<void>
-CreateStaff: (data:StaffFormData) => Promise<void> 
+CreateStaff: (data: UserType) => Promise<void> 
 UpdateStaff: (id:string) => Promise<void> 
 DeleteStaff: () => Promise<void>
 
@@ -22,7 +22,7 @@ export const useStaffStore = create<StaffType>((set)=>({
 
         try {
 
-            const response = await API.get("/users")
+            const response = await API.get("/machluxe-users")
 
 set ({
     Staff:response.data.data
@@ -33,10 +33,10 @@ set ({
     },
 
 
-    CreateStaff: async (data:StaffFormData) => {
+    CreateStaff: async (data: UserType) => {
         try {
 
-            const response = await API.post("/users", data)
+            const response = await API.post("/machluxe-users", data)
 
 
             set ((state)=>({
@@ -45,7 +45,10 @@ set ({
                 ]
             }))
 
+
             toast.success(response.data.message)
+
+// if (response.data.data)
 
         } catch (error:any){
             handleAxiosError(error)

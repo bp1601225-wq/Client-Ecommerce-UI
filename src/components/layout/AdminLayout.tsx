@@ -11,7 +11,9 @@ function AdminLayout() {
       <AdminHeader />
 
       {/* Sidebar and Main Content */}
-      <div className="flex min-h-0 flex-1 overflow-hidden">
+      <div className="flex min-h-0 flex-1 overflow-hidden
+      bg-gradient-to-tr from-white via-white to-amber-50
+      ">
 
         {/* Admin Sidebar */}
         <AdminSidebar />
@@ -20,7 +22,7 @@ function AdminLayout() {
         <div className="flex min-w-0 flex-1 flex-col overflow-y-auto">
 
           {/* Admin Page Content */}
-          <main className="min-h-[70vh] flex-1 bg-[#F8FAFC]">
+          <main className="min-h-[70vh] flex-1 p-2 ">
             <Outlet />
           </main>
 

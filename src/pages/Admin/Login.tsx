@@ -9,7 +9,6 @@ import {
   EyeOff,
   ArrowRight,
   ShieldCheck,
-  Store,
   Package,
   ShoppingCart,
   BarChart3,
@@ -19,6 +18,7 @@ import {
 
 import logo from "../../../src/assets/logo.png"
 import { useAuthStore } from '../../components/ZustandShare/AuthZuts'
+import { useNavigate, useNavigation } from 'react-router-dom'
 const features = [
   { icon: Package, label: 'Product Management' },
   { icon: ShoppingCart, label: 'Order Management' },
@@ -42,6 +42,8 @@ const itemVariants = {
   },
 }
 
+
+
 export default function AdminLogin() {
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState('')
@@ -50,17 +52,18 @@ export default function AdminLogin() {
   const [loading, setLoading] = useState(false)
 
   const {Login} = useAuthStore()
-
+  const navigate = useNavigate()
 
   //  Function to login
-
  async function Authenticate(){
     try {
 setLoading(true)
 
-await Login(email, password)
 
-
+ const success = await Login(email, password)
+ if (success) {
+      navigate("/admin-dashboard");
+    }
     } catch (error){
       //  store handles error
     } finally {
@@ -327,7 +330,8 @@ setLoading(false)
             {/* Submit */}
             <Button
       onClick={Authenticate}
-type="submit"
+      disabled={!email || !password}
+// type="submit"
               variant="contained"
               fullWidth
               endIcon={<ArrowRight size={16} />}

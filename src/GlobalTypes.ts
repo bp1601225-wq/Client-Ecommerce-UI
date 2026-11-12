@@ -3,7 +3,7 @@
 // USER
 // =========================
 
-export interface User {
+export interface UserType {
   id?: string;
   fullName: string;
   email: string;
