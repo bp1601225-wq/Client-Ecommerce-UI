@@ -43,7 +43,7 @@ export function InputText({ register }: InputTextProps) {
 // Inputs
 // Inputs
 export const inputStyle =
-  "w-full rounded border border-gray-200 bg-white px-1.5 py-0.5 text-[9px] text-gray-800 outline-none transition placeholder:text-[11px] placeholder:text-gray-400 focus:border-[#fd7e02] focus:ring-1 focus:ring-[#fd7e02]/20";
+  "w-full rounded border border-gray-200 bg-white px-2.5 py-1.5 !text-[12px] text-gray-800 outline-none transition placeholder:text-[12px] placeholder:text-gray-400 focus:border-[#fd7e02] focus:ring-1 focus:ring-[#fd7e02]/20";
 
 export const labelStyle =
   "mb-0.5 block text-[10px] font-medium text-gray-600";

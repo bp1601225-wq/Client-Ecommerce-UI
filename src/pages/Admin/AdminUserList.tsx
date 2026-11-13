@@ -44,23 +44,23 @@ LoadAllUsers()
       headerName: "Phone Number",
       minWidth: 120,
     },
-    {
-      field: "businessName",
-      headerName: "Business Name",
-      flex: 1,
-      minWidth: 130,
-    },
-    {
-      field: "businessType",
-      headerName: "Business Type",
-      minWidth: 130,
-    },
-    {
-      field: "businessDescription",
-      headerName: "Description",
-      flex: 1,
-      minWidth: 160,
-    },
+    // {
+    //   field: "businessName",
+    //   headerName: "Business Name",
+    //   flex: 1,
+    //   minWidth: 130,
+    // },
+    // {
+    //   field: "businessType",
+    //   headerName: "Business Type",
+    //   minWidth: 130,
+    // },
+    // {
+    //   field: "businessDescription",
+    //   headerName: "Description",
+    //   flex: 1,
+    //   minWidth: 160,
+    // },
     {
       field: "role",
       headerName: "Role",
@@ -78,13 +78,13 @@ LoadAllUsers()
   ];
 
   return (
-    <div className="space-y-2 text-[10px] text-black">
+    <div className="space-y-2 text-[12px] text-black">
 
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-xs font-semibold">User Management</h2>
-          <p className="text-[9px] text-gray-500">
+          <p className="text-[12px] text-gray-500">
             View registered users
           </p>
         </div>
@@ -134,7 +134,7 @@ LoadAllUsers()
       {!loading && Staff.length === 0 && (
         <div className="flex flex-col items-center gap-1 rounded border border-gray-100 bg-white py-10 text-gray-400">
           <Users size={22} className="text-[#fd7e02]" />
-          <p className="text-[10px] font-semibold text-black">
+          <p className="text-[13px] font-semibold text-black">
             No users found
           </p>
         </div>
@@ -162,7 +162,7 @@ LoadAllUsers()
             }}
             sx={{
               border: "none",
-              fontSize: "10px",
+              fontSize: "14px",
               color: "#222",
 
               "& .MuiDataGrid-columnHeaders": {
@@ -171,8 +171,8 @@ LoadAllUsers()
 
               "& .MuiDataGrid-columnHeader": {
                 backgroundColor: "#000",
-                color: "#fff",
-                fontSize: "9px",
+                color: "#e3cd0d",
+                fontSize: "12px",
                 fontWeight: 700,
               },
 
@@ -185,7 +185,7 @@ LoadAllUsers()
               },
 
               "& .MuiDataGrid-cell": {
-                fontSize: "10px",
+                fontSize: "11px",
                 outline: "none !important",
               },
 
@@ -195,11 +195,11 @@ LoadAllUsers()
               },
 
               "& .MuiTablePagination-root": {
-                fontSize: "9px",
+                fontSize: "12px",
               },
 
               "& .MuiTablePagination-selectLabel, & .MuiTablePagination-displayedRows": {
-                fontSize: "9px",
+                fontSize: "12px",
               },
             }}
           />

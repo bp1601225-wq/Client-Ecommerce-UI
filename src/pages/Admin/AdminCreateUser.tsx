@@ -123,17 +123,17 @@ await CreateStaff(data)
 
     <div>
       <label className={labelStyle}>Role *</label>
-      <select
-        {...register("role", { required: "Please select a role" })}
-        className={inputStyle}
-        defaultValue=""
-      >
-        <option value="" disabled>Select role</option>
-        <option value="SUPER_ADMIN">Super Admin</option>
-        <option value="ADMIN">Admin</option>
-        <option value="STAFF">Staff</option>
-        <option value="WHOLESALE">Wholesale</option>
-      </select>
+   <select
+  {...register("role", { required: "Please select a role" })}
+  className={`${inputStyle} !text-[12px]`}
+  defaultValue=""
+>
+  <option value="" disabled>Select role</option>
+  <option value="SUPER_ADMIN">Super Admin</option>
+  <option value="ADMIN">Admin</option>
+  <option value="STAFF">Staff</option>
+  <option value="WHOLESALE">Wholesale</option>
+</select>
       {errors.role && (
         <p className="text-[12px] text-red-500 mt-0.5">{errors.role.message}</p>
       )}
@@ -141,11 +141,13 @@ await CreateStaff(data)
 
     <div>
       <label className={labelStyle}>Account Status *</label>
-      <select
-        {...register("accountStatus", { required: "Please select an account status" })}
-        className={inputStyle}
-        defaultValue="PENDING"
-      >
+     <select
+  {...register("accountStatus", {
+    required: "Please select an account status",
+  })}
+  className={`${inputStyle} !text-[12px]`}
+  defaultValue="PENDING"
+>
         <option value="PENDING">Pending</option>
         <option value="APPROVED">Approved</option>
         <option value="REJECTED">Rejected</option>

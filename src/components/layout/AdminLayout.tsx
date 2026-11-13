@@ -1,14 +1,23 @@
 
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import AdminSidebar from '../../pages/Admin/Sidebar'
 import AdminHeader from '../../pages/Admin/Header'
 
 function AdminLayout() {
+
+const navigate = useNavigate()
+const SignOut= () => {
+  localStorage.clear()
+  navigate("/login")
+}
+
+
+
   return (
     <div className="flex h-screen flex-col overflow-hidden ">
 
       {/* Admin Header - Full Width */}
-      <AdminHeader />
+      <AdminHeader onLogout={SignOut}/>
 
       {/* Sidebar and Main Content */}
       <div className="flex min-h-0 flex-1 overflow-hidden

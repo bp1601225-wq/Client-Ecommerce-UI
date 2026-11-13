@@ -1,4 +1,5 @@
 
+import { Button } from '@mui/material'
 import { motion } from 'framer-motion'
 import {
   Store,
@@ -11,6 +12,8 @@ import {
   CheckCircle2,
   Building2,
 } from 'lucide-react'
+import { useForm } from 'react-hook-form'
+import {type UserType } from '../../GlobalTypes'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -32,7 +35,13 @@ const itemVariants = {
 const inputClass =
   'w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-xs text-[#111111] outline-none transition focus:border-[#fd7e02] focus:ring-2 focus:ring-[#fd7e02]/10 placeholder:text-gray-400'
 
+
+
+
 export default function WholesaleApplication() {
+
+const {register, handleSubmit, formState:{errors, isSubmitting}} = useForm<UserType>()
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -304,19 +313,34 @@ export default function WholesaleApplication() {
 
               {/* Submit */}
               <motion.div variants={itemVariants} className="pt-1">
-                <motion.button
-                  type="button"
-                  whileHover={{
-                    scale: 1.01,
-                    backgroundColor: '#fd7e02',
-                    color: '#111111',
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#111111] py-3 text-xs font-bold text-white transition-colors"
-                >
-                  Submit Application
-                  <ArrowRight size={16} />
-                </motion.button>
+           <Button
+    type="submit"
+    fullWidth
+    variant="contained"
+    endIcon={<ArrowRight size={16} />}
+    sx={{
+      py: 1.4,
+      borderRadius: "8px",
+      backgroundColor: "#111111",
+      color: "#ffffff",
+      fontSize: "12px",
+      fontWeight: 700,
+      textTransform: "none",
+      boxShadow: "none",
+      transition: "all 0.2s ease",
+
+      "&:hover": {
+        backgroundColor: "#fd7e02",
+        color: "#111111",
+        boxShadow: "none",
+      },
+    }}
+    component={motion.button}
+    whileHover={{ scale: 1.01 }}
+    whileTap={{ scale: 0.98 }}
+  >
+    Submit Application
+  </Button>
 
                 <p className="mt-3 text-center text-[10px] leading-4 text-gray-400">
                   By submitting this application, you agree to have
