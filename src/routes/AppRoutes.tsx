@@ -40,6 +40,8 @@ import AdminSettings from '../pages/Admin/AdminSettings'
 import AdminLogin from '../pages/Admin/Login'
 import CreateUser from '../pages/Admin/AdminCreateUser'
 import Logs from '../pages/Login/LoginLogs'
+import WholesaleApplicationSuccess from '../pages/WholeSale/ApplicationSuccess'
+import WholesaleAccessResult from '../pages/WholeSale/ReviewFromAdmins'
 
 export function AppRoutes() {
   return (
@@ -69,6 +71,8 @@ export function AppRoutes() {
 
       {/* WHOLESALE PORTAL - WHOLESALE LAYOUT ONLY */}
       <Route element={<WholesaleLayout />}>
+
+
 
         <Route
           path="/whole-sale-dashboard"
@@ -135,6 +139,8 @@ export function AppRoutes() {
   <Route path="/system-logs" element={< Logs/>} />
   <Route path="/admin-users" element={<CreateUser />} />
 
+
+
 </Route>
 
 
@@ -148,7 +154,15 @@ export function AppRoutes() {
 
 
 
+<Route
+  path="/whole-sale-application-success"
+  element={<WholesaleApplicationSuccess />}
+/>
 
+<Route
+  path="/whole-sale-access-result"
+  element={<WholesaleAccessResult />}
+/>
 
     </Routes>
   )

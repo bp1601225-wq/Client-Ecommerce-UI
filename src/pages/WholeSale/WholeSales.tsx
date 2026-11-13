@@ -9,6 +9,7 @@ import {
   CheckCircle2,
 } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useWholeSaleStore } from '../../components/ZustandShare/WholeSaleZuts'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -30,7 +31,7 @@ const itemVariants = {
 }
 
 
-export default function WholesaleAccess() {
+export default function WholesaleAccess(onSuccess:{}) {
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -53,6 +54,11 @@ export default function WholesaleAccess() {
 
 
   const navigate = useNavigate()
+
+const {AccessWholeSaleAccount} = useWholeSaleStore()
+
+
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -231,33 +237,44 @@ export default function WholesaleAccess() {
               </motion.div>
             </motion.div>
 
-            <motion.button
-            onClick={()=>{
-navigate("/whole-sale-dashboard")
-            }}
-              whileHover={{
-                scale: 1.02,
-                backgroundColor: '#fd7e02',
-                color: '#111111',
-              }}
-              whileTap={{ scale: 0.97 }}
-              disabled={loading}
-              type="submit"
-              className="w-full bg-[#111111] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-colors disabled:opacity-60"
-            >
-              {loading ? 'Verifying...' : 'Continue to Wholesale'}
+          <motion.button
+  onClick={async (e) => {
+    e.preventDefault();
 
-              <motion.span
-                animate={{ x: [0, 5, 0] }}
-                transition={{
-                  duration: 1.2,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                <ArrowRight size={19} />
-              </motion.span>
-            </motion.button>
+    if (!email.trim() || loading) return;
+
+    try {
+      setLoading(true);
+
+      const result = await AccessWholeSaleAccount(email.trim());
+
+      if (result) {
+        navigate("/whole-sale-access-result", {
+          state: result,
+        });
+      }
+    } catch (error) {
+      // store handles error
+
+      
+    } finally {
+      setLoading(false);
+    }
+  }}
+  whileHover={{
+    scale: 1.02,
+    backgroundColor: "#fd7e02",
+    color: "#111111",
+  }}
+  whileTap={{ scale: 0.97 }}
+  disabled={loading || !email.trim()}
+  type="button"
+  className="w-full bg-[#111111] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-colors disabled:opacity-60"
+>
+  {loading ? "Verifying..." : "Continue to Wholesale"}
+
+  {!loading && <ArrowRight size={19} />}
+</motion.button>
 
 
           </motion.form>

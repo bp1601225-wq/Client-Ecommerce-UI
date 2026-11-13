@@ -15,7 +15,7 @@ import {
 import { useForm } from 'react-hook-form'
 import {type UserType } from '../../GlobalTypes'
 import { useWholeSaleStore } from '../../components/ZustandShare/WholeSaleZuts'
-
+import { useNavigate } from "react-router-dom";
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -41,6 +41,8 @@ const inputClass =
 
 export default function WholesaleApplication() {
 
+const navigate = useNavigate();
+
 const {CreateWholeSale} = useWholeSaleStore()
 
 const {register, handleSubmit, formState:{errors, isSubmitting}} = useForm<UserType>()
@@ -48,7 +50,11 @@ const {register, handleSubmit, formState:{errors, isSubmitting}} = useForm<UserT
 const SendApplicationForm = async (data:any) => {
 try {
 // console.log(data)
-await CreateWholeSale(data)
+const success = await CreateWholeSale(data)
+
+if (success){
+    navigate("/whole-sale-application-success");
+}
 
 
 } catch (error){
@@ -59,7 +65,7 @@ await CreateWholeSale(data)
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 0 }} 
       animate={{ opacity: 1 }}
       transition={{ duration: 0.35 }}
       className="min-h-screen bg-[#FAFAFA] px-3 py-5 sm:px-5 sm:py-7"
