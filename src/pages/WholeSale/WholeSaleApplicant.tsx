@@ -14,6 +14,7 @@ import {
 } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import {type UserType } from '../../GlobalTypes'
+import { useWholeSaleStore } from '../../components/ZustandShare/WholeSaleZuts'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -40,7 +41,21 @@ const inputClass =
 
 export default function WholesaleApplication() {
 
+const {CreateWholeSale} = useWholeSaleStore()
+
 const {register, handleSubmit, formState:{errors, isSubmitting}} = useForm<UserType>()
+
+const SendApplicationForm = async (data:any) => {
+try {
+// console.log(data)
+await CreateWholeSale(data)
+
+
+} catch (error){
+  // store handles error
+}
+
+}
 
   return (
     <motion.div
@@ -175,180 +190,274 @@ const {register, handleSubmit, formState:{errors, isSubmitting}} = useForm<UserT
               </p>
             </motion.div>
 
-            <form className="space-y-5">
+    
+<form
+  className="space-y-5"
+  onSubmit={handleSubmit(SendApplicationForm)}
+  noValidate
+>
+  {/* Personal Information */}
+  <motion.div variants={itemVariants}>
+    <h3 className="mb-3 text-xs font-bold text-[#111111]">
+      Personal Information
+    </h3>
 
-              {/* Personal Information */}
-              <motion.div variants={itemVariants}>
-                <h3 className="mb-3 text-xs font-bold text-[#111111]">
-                  Personal Information
-                </h3>
+    <div className="grid gap-3 sm:grid-cols-2">
+      {/* Full Name */}
+      <div>
+        <label className="mb-1.5 block text-xs font-medium text-gray-700">
+          Full Name
+        </label>
+        <div className="relative">
+          <User size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+          <input
+            {...register("fullName", {
+              required: "Full name is required",
+              minLength: {
+                value: 3,
+                message: "Name must be at least 3 characters",
+              },
+            })}
+            placeholder="Enter your full name"
+            className={`${inputClass} pl-9 ${errors.fullName ? "border-red-500" : ""}`}
+          />
+        </div>
+        {errors.fullName && (
+          <p className="mt-1 text-[11px] text-red-500">
+            {errors.fullName.message}
+          </p>
+        )}
+      </div>
 
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <div>
-                    <label className="mb-1.5 block text-xs font-medium text-gray-700">
-                      Full Name
-                    </label>
-                    <div className="relative">
-                      <User size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                      <input
-                        type="text"
-                        placeholder="Enter your full name"
-                        className={`${inputClass} pl-9`}
-                      />
-                    </div>
-                  </div>
+      {/* Phone Number */}
+      <div>
+        <label className="mb-1.5 block text-xs font-medium text-gray-700">
+          Phone Number
+        </label>
+        <div className="relative">
+          <Phone size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+          <input
+            {...register("phoneNumber", {
+              required: "Phone number is required",
+              minLength: {
+                value: 10,
+                message: "Enter a valid phone number",
+              },
+            })}
+            type="tel"
+            placeholder="e.g. 024 000 0000"
+            className={`${inputClass} pl-9 ${errors.phoneNumber ? "border-red-500" : ""}`}
+          />
+        </div>
+        {errors.phoneNumber && (
+          <p className="mt-1 text-[11px] text-red-500">
+            {errors.phoneNumber.message}
+          </p>
+        )}
+      </div>
+    </div>
 
-                  <div>
-                    <label className="mb-1.5 block text-xs font-medium text-gray-700">
-                      Phone Number
-                    </label>
-                    <div className="relative">
-                      <Phone size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                      <input
-                        type="tel"
-                        placeholder="e.g. 024 000 0000"
-                        className={`${inputClass} pl-9`}
-                      />
-                    </div>
-                  </div>
-                </div>
+    {/* Business Email */}
+    <div className="mt-3">
+      <label className="mb-1.5 block text-xs font-medium text-gray-700">
+        Business Email Address
+      </label>
+      <div className="relative">
+        <Mail size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+        <input
+          {...register("email", {
+            required: "Email address is required",
+            pattern: {
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              message: "Enter a valid email address",
+            },
+          })}
+          type="email"
+          placeholder="business@example.com"
+          className={`${inputClass} pl-9 ${errors.email ? "border-red-500" : ""}`}
+        />
+      </div>
+      {errors.email && (
+        <p className="mt-1 text-[11px] text-red-500">
+          {errors.email.message}
+        </p>
+      )}
+    </div>
+  </motion.div>
 
-                <div className="mt-3">
-                  <label className="mb-1.5 block text-xs font-medium text-gray-700">
-                    Business Email Address
-                  </label>
-                  <div className="relative">
-                    <Mail size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="email"
-                      placeholder="business@example.com"
-                      className={`${inputClass} pl-9`}
-                    />
-                  </div>
-                </div>
-              </motion.div>
+  <div className="border-t border-gray-100" />
 
-              <div className="border-t border-gray-100" />
+  {/* Business Information */}
+  <motion.div variants={itemVariants}>
+    <h3 className="mb-3 text-xs font-bold text-[#111111]">
+      Business Information
+    </h3>
 
-              {/* Business Information */}
-              <motion.div variants={itemVariants}>
-                <h3 className="mb-3 text-xs font-bold text-[#111111]">
-                  Business Information
-                </h3>
+    <div className="space-y-3">
 
-                <div className="space-y-3">
-                  <div>
-                    <label className="mb-1.5 block text-xs font-medium text-gray-700">
-                      Business Name
-                    </label>
-                    <div className="relative">
-                      <Store size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                      <input
-                        type="text"
-                        placeholder="Enter your business name"
-                        className={`${inputClass} pl-9`}
-                      />
-                    </div>
-                  </div>
+      {/* Business Name */}
+      <div>
+        <label className="mb-1.5 block text-xs font-medium text-gray-700">
+          Business Name
+        </label>
+        <div className="relative">
+          <Store size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+          <input
+            {...register("businessName", {
+              required: "Business name is required",
+              minLength: {
+                value: 2,
+                message: "Business name is too short",
+              },
+            })}
+            placeholder="Enter your business name"
+            className={`${inputClass} pl-9 ${errors.businessName ? "border-red-500" : ""}`}
+          />
+        </div>
+        {errors.businessName && (
+          <p className="mt-1 text-[11px] text-red-500">
+            {errors.businessName.message}
+          </p>
+        )}
+      </div>
 
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    <div>
-                      <label className="mb-1.5 block text-xs font-medium text-gray-700">
-                        Business Type
-                      </label>
-                      <select className={inputClass} defaultValue="">
-                        <option value="" disabled>
-                          Select business type
-                        </option>
-                        <option>Retail Shop</option>
-                        <option>Online Store</option>
-                        <option>Distributor</option>
-                        <option>Reseller</option>
-                        <option>Other</option>
-                      </select>
-                    </div>
+      <div className="grid gap-3 sm:grid-cols-2">
 
-                    <div>
-                      <label className="mb-1.5 block text-xs font-medium text-gray-700">
-                        Expected Order Volume
-                      </label>
-                      <select className={inputClass} defaultValue="">
-                        <option value="" disabled>
-                          Select quantity
-                        </option>
-                        <option>10–20 pairs</option>
-                        <option>21–50 pairs</option>
-                        <option>51–100 pairs</option>
-                        <option>Above 100 pairs</option>
-                      </select>
-                    </div>
-                  </div>
+        {/* Business Type */}
+        <div>
+          <label className="mb-1.5 block text-xs font-medium text-gray-700">
+            Business Type
+          </label>
+          <select
+            {...register("businessType", {
+              required: "Please select your business type",
+            })}
+            className={`${inputClass} ${errors.businessType ? "border-red-500" : ""}`}
+            defaultValue=""
+          >
+            <option value="" disabled>Select business type</option>
+         <option value="RETAIL_SHOP">Retail Shop</option>
+<option value="ONLINE_STORE">Online Store</option>
+<option value="DISTRIBUTOR">Distributor</option>
+<option value="RESELLER">Reseller</option>
+<option value="OTHER">Other</option>
+          </select>
+          {errors.businessType && (
+            <p className="mt-1 text-[11px] text-red-500">
+              {errors.businessType.message}
+            </p>
+          )}
+        </div>
 
-                  <div>
-                    <label className="mb-1.5 block text-xs font-medium text-gray-700">
-                      Business Location
-                    </label>
-                    <div className="relative">
-                      <MapPin size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                      <input
-                        type="text"
-                        placeholder="City, Region"
-                        className={`${inputClass} pl-9`}
-                      />
-                    </div>
-                  </div>
+        {/* Expected Order Volume */}
+        <div>
+          <label className="mb-1.5 block text-xs font-medium text-gray-700">
+            Expected Order Volume
+          </label>
+          <select
+            {...register("expectedOrderVolume", {
+              required: "Please select your expected volume",
+            })}
+            className={`${inputClass} ${errors.expectedOrderVolume ? "border-red-500" : ""}`}
+            defaultValue=""
+          >
+           <option value="" disabled>Select quantity</option>
+<option value="PAIRS_10_20">10–20 pairs</option>
+<option value="PAIRS_21_50">21–50 pairs</option>
+<option value="PAIRS_51_100">51–100 pairs</option>
+<option value="ABOVE_100">Above 100 pairs</option>
+          </select>
+          {errors.expectedOrderVolume && (
+            <p className="mt-1 text-[11px] text-red-500">
+              {errors.expectedOrderVolume.message}
+            </p>
+          )}
+        </div>
+      </div>
 
-                  <div>
-                    <label className="mb-1.5 block text-xs font-medium text-gray-700">
-                      Tell us about your business
-                    </label>
-                    <textarea
-                      rows={3}
-                      placeholder="Briefly describe your business and what you intend to purchase..."
-                      className={`${inputClass} resize-none`}
-                    />
-                  </div>
-                </div>
-              </motion.div>
+      {/* Business Location */}
+      <div>
+        <label className="mb-1.5 block text-xs font-medium text-gray-700">
+          Business Location
+        </label>
+        <div className="relative">
+          <MapPin size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+          <input
+            {...register("businessLocation", {
+              required: "Business location is required",
+            })}
+            placeholder="City, Region"
+            className={`${inputClass} pl-9 ${errors.businessLocation ? "border-red-500" : ""}`}
+          />
+        </div>
+        {errors.businessLocation && (
+          <p className="mt-1 text-[11px] text-red-500">
+            {errors.businessLocation.message}
+          </p>
+        )}
+      </div>
 
-              {/* Submit */}
-              <motion.div variants={itemVariants} className="pt-1">
-           <Button
-    type="submit"
-    fullWidth
-    variant="contained"
-    endIcon={<ArrowRight size={16} />}
-    sx={{
-      py: 1.4,
-      borderRadius: "8px",
-      backgroundColor: "#111111",
-      color: "#ffffff",
-      fontSize: "12px",
-      fontWeight: 700,
-      textTransform: "none",
-      boxShadow: "none",
-      transition: "all 0.2s ease",
+      {/* Business Description */}
+      <div>
+        <label className="mb-1.5 block text-xs font-medium text-gray-700">
+          Tell us about your business
+        </label>
+        <textarea
+          {...register("businessDescription", {
+            required: "Please describe your business",
+            minLength: {
+              value: 10,
+              message: "Please provide at least 10 characters",
+            },
+          })}
+          rows={3}
+          placeholder="Briefly describe your business and what you intend to purchase..."
+          className={`${inputClass} resize-none ${errors.businessDescription ? "border-red-500" : ""}`}
+        />
+        {errors.businessDescription && (
+          <p className="mt-1 text-[11px] text-red-500">
+            {errors.businessDescription.message}
+          </p>
+        )}
+      </div>
+    </div>
+  </motion.div>
 
-      "&:hover": {
-        backgroundColor: "#fd7e02",
-        color: "#111111",
+  {/* Submit */}
+  <motion.div variants={itemVariants} className="pt-1">
+    <Button
+      type="submit"
+      fullWidth
+      variant="contained"
+      // endIcon={<ArrowRight size={16} />}
+      sx={{
+        py: 1.4,
+        borderRadius: "8px",
+        backgroundColor: "#111111",
+        color: "#ffffff",
+        fontSize: "12px",
+        fontWeight: 700,
+        textTransform: "none",
         boxShadow: "none",
-      },
-    }}
-    component={motion.button}
-    whileHover={{ scale: 1.01 }}
-    whileTap={{ scale: 0.98 }}
-  >
-    Submit Application
-  </Button>
+        transition: "all 0.2s ease",
+        "&:hover": {
+          backgroundColor: "#fd7e02",
+          color: "#111111",
+          boxShadow: "none",
+        },
+      }}
+    >
+      {isSubmitting ? "Submitting ..." : "Submit Application"}
+    </Button>
 
-                <p className="mt-3 text-center text-[10px] leading-4 text-gray-400">
-                  By submitting this application, you agree to have
-                  your business information reviewed for wholesale
-                  membership.
-                </p>
-              </motion.div>
-            </form>
+    <p className="mt-3 text-center text-[10px] leading-4 text-gray-400">
+      By submitting this application, you agree to have
+      your business information reviewed for wholesale
+      membership.
+    </p>
+  </motion.div>
+</form>
+
           </motion.div>
         </div>
       </motion.div>
