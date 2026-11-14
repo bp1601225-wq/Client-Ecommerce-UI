@@ -61,6 +61,25 @@ icon: Users,
 },
 ],
 },
+
+{
+title: 'PRODUCT MANAGEMENT',
+items: [
+{
+name: 'products catalog',
+path: '/admin-products',
+icon: Truck,
+},
+
+
+{
+name: 'Inventory',
+path: '/admin-inventories',
+icon: Truck,
+},
+],
+},
+
 {
 title: 'CUSTOMERS & FINANCE',
 items: [

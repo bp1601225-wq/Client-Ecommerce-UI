@@ -121,7 +121,13 @@ export function AppRoutes() {
 
   <Route
     path="/admin-wholesale-applications"
-    element={<AdminWholesaleApplications />}
+    element={<AdminInventory />}
+  />
+
+  
+  <Route
+    path="/admin-inventories"
+    element={<AdminInventory />}
   />
 
   <Route

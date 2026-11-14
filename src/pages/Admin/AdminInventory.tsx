@@ -1,22 +1,95 @@
-import { useMemo, useState } from 'react'
-import { Search } from 'lucide-react'
 
-const inventory = [
-  { product: 'Luxe Leather Tote', sku: 'ML-BAG-014', category: 'Handbags', stock: 42, threshold: 10 },
-  { product: 'Sculpted Gold Cuff', sku: 'ML-JWL-022', category: 'Jewelry', stock: 8, threshold: 12 },
-  { product: 'Cashmere Blend Scarf', sku: 'ML-ACC-031', category: 'Accessories', stock: 76, threshold: 15 },
-  { product: 'Classic Leather Loafer', sku: 'ML-SHO-009', category: 'Shoes', stock: 0, threshold: 8 },
-  { product: 'Structured Mini Crossbody', sku: 'ML-BAG-028', category: 'Handbags', stock: 23, threshold: 10 },
-]
+import { Button } from "@mui/material";
+import { PackagePlus } from "lucide-react";
 
-export default function AdminInventory() {
-  const [query, setQuery] = useState('')
-  const [filter, setFilter] = useState('All inventory')
-  const filtered = useMemo(() => inventory.filter(item => `${item.product} ${item.sku} ${item.category}`.toLowerCase().includes(query.toLowerCase()) && (filter === 'All inventory' || (filter === 'In stock' ? item.stock > item.threshold : filter === 'Low stock' ? item.stock > 0 && item.stock <= item.threshold : item.stock === 0))), [query, filter])
-  const status = (stock: number, threshold: number) => stock === 0 ? 'Out of stock' : stock <= threshold ? 'Low stock' : 'In stock'
-  return <main className="space-y-5 p-4 sm:p-6">
-    <header><h1 className="text-2xl font-semibold tracking-tight text-slate-900">Inventory</h1><p className="mt-1 text-sm text-slate-500">Monitor stock levels and stay ahead of replenishment needs.</p></header>
-    <section className="grid gap-3 sm:grid-cols-3">{[['Tracked products', inventory.length], ['Low stock', inventory.filter(i => i.stock > 0 && i.stock <= i.threshold).length], ['Out of stock', inventory.filter(i => i.stock === 0).length]].map(([label, value]) => <article key={label} className="rounded-xl border border-slate-200 bg-white p-4"><p className="text-sm text-slate-500">{label}</p><p className="mt-2 text-2xl font-semibold text-slate-900">{value}</p></article>)}</section>
-    <section className="overflow-hidden rounded-xl border border-slate-200 bg-white"><div className="flex flex-col gap-3 border-b border-slate-100 p-4 sm:flex-row sm:items-center sm:justify-between"><div><h2 className="font-semibold text-slate-900">Stock levels</h2><p className="mt-1 text-sm text-slate-500">Products at or below their reorder threshold need attention.</p></div><div className="flex flex-col gap-2 sm:flex-row"><label className="relative"><Search className="absolute left-3 top-2.5 text-slate-400" size={16} /><input value={query} onChange={e => setQuery(e.target.value)} placeholder="Search product or SKU" className="w-full rounded-lg border border-slate-200 py-2 pl-9 pr-3 text-sm outline-none focus:border-blue-600 sm:w-56" /></label><select value={filter} onChange={e => setFilter(e.target.value)} className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm outline-none focus:border-blue-600"><option>All inventory</option><option>In stock</option><option>Low stock</option><option>Out of stock</option></select></div></div><div className="overflow-x-auto"><table className="w-full min-w-[750px] text-left text-sm"><thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-500"><tr>{['Product', 'SKU', 'Category', 'Current stock', 'Stock threshold', 'Inventory status', 'Action'].map(h => <th key={h} className="px-4 py-3 font-medium">{h}</th>)}</tr></thead><tbody className="divide-y divide-slate-100">{filtered.map(item => { const current = status(item.stock, item.threshold); return <tr key={item.sku} className="hover:bg-slate-50"><td className="px-4 py-3.5 font-medium text-slate-900">{item.product}</td><td className="px-4 py-3.5 text-slate-500">{item.sku}</td><td className="px-4 py-3.5 text-slate-600">{item.category}</td><td className="px-4 py-3.5"><span className={`font-semibold ${item.stock === 0 ? 'text-rose-700' : item.stock <= item.threshold ? 'text-orange-700' : 'text-slate-800'}`}>{item.stock} units</span></td><td className="px-4 py-3.5 text-slate-600">{item.threshold} units</td><td className="px-4 py-3.5"><span className={`rounded-full px-2.5 py-1 text-xs font-medium ${current === 'In stock' ? 'bg-emerald-50 text-emerald-700' : current === 'Low stock' ? 'bg-orange-50 text-orange-700' : 'bg-rose-50 text-rose-700'}`}>{current}</span></td><td className="px-4 py-3.5"><button onClick={() => alert(`Restock reminder noted for ${item.product}.`)} className="text-sm font-medium text-blue-700 hover:text-orange-600">Restock</button></td></tr> })}</tbody></table>{filtered.length === 0 && <div className="p-10 text-center"><p className="font-medium text-slate-800">No inventory items found</p><p className="mt-1 text-sm text-slate-500">Try a different search or status filter.</p></div>}</div></section>
-  </main>
-}
+const AdminInventory = () => {
+  const inputStyle =
+    "w-full rounded-md border border-gray-300 bg-white px-3 py-1 !text-sm outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500";
+
+  const labelStyle = "mb-1 block text-xs font-medium text-gray-700";
+
+  return (
+    <div className="max-w-5xl space-y-5 p-2">
+
+      {/* Header */}
+      <div className="flex items-center gap-3 border-b border-gray-200 pb-3">
+        <div className="rounded-md bg-amber-100 p-2 text-amber-700">
+          <PackagePlus size={20} />
+        </div>
+
+        <div>
+          <h2 className="text-lg font-semibold text-gray-900">
+            Add Inventory
+          </h2>
+          <p className="text-xs text-gray-500">
+            Assign initial stock to a product.
+          </p>
+        </div>
+      </div>
+
+      {/* Inventory Information */}
+      <section className="space-y-3">
+        <h3 className="border-l-2 border-amber-500 pl-2 text-sm font-semibold text-gray-900">
+          Inventory Information
+        </h3>
+
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+
+          <div>
+            <label className={labelStyle}>Product</label>
+            <select className={inputStyle} defaultValue="">
+              <option value="" disabled>Select product</option>
+              <option value="product1">Classic White Sneakers</option>
+              <option value="product2">Premium Leather Shoes</option>
+              <option value="product3">Ladies Handbag</option>
+            </select>
+          </div>
+
+          <div>
+            <label className={labelStyle}>Quantity</label>
+            <input
+              type="number"
+              min="0"
+              placeholder="Enter available quantity"
+              className={inputStyle}
+            />
+          </div>
+
+        </div>
+      </section>
+
+      {/* Actions */}
+      <div className="flex justify-end gap-2 border-t border-gray-200 pt-3">
+        <button
+          type="button"
+          className="rounded-md px-4 py-2 text-xs font-medium text-gray-600 hover:bg-gray-100"
+        >
+          Cancel
+        </button>
+
+        <Button
+          type="button"
+          variant="contained"
+          sx={{
+            backgroundColor: "#F59E0B",
+            color: "#000",
+            textTransform: "none",
+            fontSize: "12px",
+            fontWeight: 600,
+            borderRadius: "6px",
+            boxShadow: "none",
+            px: 2.5,
+            "&:hover": {
+              backgroundColor: "#D97706",
+              boxShadow: "none",
+            },
+          }}
+        >
+          Save Inventory
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default AdminInventory;

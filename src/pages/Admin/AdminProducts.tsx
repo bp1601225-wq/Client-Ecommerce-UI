@@ -1,35 +1,169 @@
-import { useMemo, useState } from 'react'
-import { motion } from 'framer-motion'
-import { Eye, PackagePlus, Search, SlidersHorizontal, X } from 'lucide-react'
 
-const initialProducts = [
-  { name: 'Luxe Leather Tote', sku: 'ML-BAG-014', category: 'Handbags', retail: 289, wholesale: 174, stock: 42, status: 'Active', image: 'photo-1584917865442-de89df76afd3' },
-  { name: 'Sculpted Gold Cuff', sku: 'ML-JWL-022', category: 'Jewelry', retail: 128, wholesale: 72, stock: 8, status: 'Low stock', image: 'photo-1611652022419-a9419f74343d' },
-  { name: 'Cashmere Blend Scarf', sku: 'ML-ACC-031', category: 'Accessories', retail: 96, wholesale: 54, stock: 76, status: 'Active', image: 'photo-1601924994987-69e26d50dc26' },
-  { name: 'Classic Leather Loafer', sku: 'ML-SHO-009', category: 'Shoes', retail: 215, wholesale: 129, stock: 0, status: 'Out of stock', image: 'photo-1533867617858-e7b97e060509' },
-  { name: 'Structured Mini Crossbody', sku: 'ML-BAG-028', category: 'Handbags', retail: 198, wholesale: 118, stock: 23, status: 'Active', image: 'photo-1590874103328-eac38a683ce7' },
-]
+import { Button } from "@mui/material";
+import { ImagePlus, PackagePlus } from "lucide-react";
 
-export default function AdminProducts() {
-  const [products, setProducts] = useState(initialProducts)
-  const [query, setQuery] = useState('')
-  const [category, setCategory] = useState('All categories')
-  const [selected, setSelected] = useState<(typeof initialProducts)[number] | null>(null)
-  const filtered = useMemo(() => products.filter(product => `${product.name} ${product.sku}`.toLowerCase().includes(query.toLowerCase()) && (category === 'All categories' || product.category === category)), [products, query, category])
+const AdminProducts = () => {
+  const inputStyle =
+    "w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 !text-sm";
+
+  const labelStyle = "mb-1 block text-xs font-medium text-gray-700";
 
   return (
-    <main className="space-y-5 p-4 sm:p-6">
-      <header className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><div><h1 className="text-2xl font-semibold tracking-tight text-slate-900">Products</h1><p className="mt-1 text-sm text-slate-500">Manage your catalog, pricing, and product availability.</p></div><button onClick={() => setProducts(items => [{ name: 'New product', sku: `ML-NEW-${String(items.length + 1).padStart(3, '0')}`, category: 'Accessories', retail: 0, wholesale: 0, stock: 0, status: 'Out of stock', image: 'photo-1523275335684-37898b6baf30' }, ...items])} className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-blue-800"><PackagePlus size={17} /> Add product</button></header>
-      
-      
-      <section className="grid gap-3 sm:grid-cols-3"><div className="rounded-xl border border-slate-200 bg-white p-4"><p className="text-sm text-slate-500">Total products</p><strong className="mt-2 block text-2xl text-slate-900">{products.length}</strong></div><div className="rounded-xl border border-slate-200 bg-white p-4"><p className="text-sm text-slate-500">Active listings</p><strong className="mt-2 block text-2xl text-slate-900">{products.filter(p => p.status === 'Active').length}</strong></div><div className="rounded-xl border border-slate-200 bg-white p-4"><p className="text-sm text-slate-500">Needs restocking</p><strong className="mt-2 block text-2xl text-orange-600">{products.filter(p => p.stock <= 10).length}</strong></div></section>
-      <section className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-        <div className="flex flex-col gap-3 border-b border-slate-100 p-4 sm:flex-row sm:items-center sm:justify-between"><div><h2 className="font-semibold text-slate-900">Product catalog</h2><p className="mt-1 text-sm text-slate-500">{filtered.length} products shown</p></div><div className="flex flex-col gap-2 sm:flex-row"><label className="relative"><Search className="absolute left-3 top-2.5 text-slate-400" size={16} /><input value={query} onChange={e => setQuery(e.target.value)} placeholder="Search products or SKU" className="w-full rounded-lg border border-slate-200 py-2 pl-9 pr-3 text-sm outline-none focus:border-blue-600 sm:w-56" /></label><label className="relative"><SlidersHorizontal className="absolute left-3 top-2.5 text-slate-400" size={15} /><select value={category} onChange={e => setCategory(e.target.value)} className="w-full appearance-none rounded-lg border border-slate-200 bg-white py-2 pl-9 pr-8 text-sm outline-none focus:border-blue-600 sm:w-44"><option>All categories</option><option>Handbags</option><option>Jewelry</option><option>Accessories</option><option>Shoes</option></select></label></div></div>
-        <div className="overflow-x-auto"><table className="w-full min-w-[900px] text-left text-sm"><thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-500"><tr>{['Product', 'Category', 'Retail price', 'Wholesale price', 'Stock', 'Status', ''].map(h => <th key={h} className="px-4 py-3 font-medium">{h}</th>)}</tr></thead><tbody className="divide-y divide-slate-100">{filtered.map(product => <tr key={product.sku} className="hover:bg-slate-50"><td className="px-4 py-3"><div className="flex items-center gap-3"><img src={`https://images.unsplash.com/${product.image}?auto=format&fit=crop&w=100&q=80`} alt="" className="h-11 w-11 rounded-lg object-cover" /><div><p className="font-medium text-slate-900">{product.name}</p><p className="text-xs text-slate-500">{product.sku}</p></div></div></td><td className="px-4 py-3 text-slate-600">{product.category}</td><td className="px-4 py-3 font-medium text-slate-800">${product.retail.toFixed(2)}</td><td className="px-4 py-3 text-slate-600">${product.wholesale.toFixed(2)}</td><td className="px-4 py-3 text-slate-600">{product.stock} units</td><td className="px-4 py-3"><span className={`rounded-full px-2.5 py-1 text-xs font-medium ${product.status === 'Active' ? 'bg-emerald-50 text-emerald-700' : product.status === 'Low stock' ? 'bg-orange-50 text-orange-700' : 'bg-slate-100 text-slate-600'}`}>{product.status}</span></td><td className="px-4 py-3"><button onClick={() => setSelected(product)} aria-label={`View ${product.name}`} className="rounded-md p-2 text-slate-500 hover:bg-blue-50 hover:text-blue-700"><Eye size={17} /></button></td></tr>)}</tbody></table>
-          {filtered.length === 0 && <div className="p-10 text-center"><p className="font-medium text-slate-800">No products found</p><p className="mt-1 text-sm text-slate-500">Try another search or category.</p></div>}
+    <div className="max-w-5xl space-y-5 p-2">
+
+      {/* Header */}
+      <div className="flex items-center gap-3 border-b border-gray-200 pb-3">
+        <div className="rounded-md bg-amber-100 p-2 text-amber-700">
+          <PackagePlus size={20} />
+        </div>
+        <div>
+          <h2 className="text-lg font-semibold text-gray-900">
+            Add New Product
+          </h2>
+          <p className="text-xs text-gray-500">
+            Product details and pricing
+          </p>
+        </div>
+      </div>
+
+      {/* Product Information */}
+      <section className="space-y-3">
+        <h3 className="border-l-2 border-amber-500 pl-2 text-sm font-semibold text-gray-900">
+          Product Information
+        </h3>
+
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div>
+            <label className={labelStyle}>Product Name</label>
+            <input
+              type="text"
+              placeholder="Product name"
+              className={inputStyle}
+            />
+          </div>
+
+          {/* <div>
+            <label className={labelStyle}>SKU</label>
+            <input
+              type="text"
+              placeholder="Product SKU"
+              className={inputStyle}
+            />
+          </div> */}
+
+          <div>
+            <label className={labelStyle}>Category</label>
+            <select className={inputStyle} defaultValue="">
+              <option value="" disabled>Select category</option>
+              <option value="shoes">Shoes</option>
+              <option value="bags">Bags</option>
+            </select>
+          </div>
+
+       
         </div>
       </section>
-      {selected && <div role="dialog" aria-modal="true" aria-label="Product details" className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/40 p-4" onClick={() => setSelected(null)}><motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} onClick={e => e.stopPropagation()} className="w-full max-w-md rounded-xl bg-white p-5"><div className="flex justify-between"><h2 className="font-semibold text-slate-900">Product details</h2><button aria-label="Close" onClick={() => setSelected(null)} className="text-slate-400 hover:text-slate-700"><X size={19} /></button></div><img src={`https://images.unsplash.com/${selected.image}?auto=format&fit=crop&w=700&q=80`} alt={selected.name} className="mt-4 h-48 w-full rounded-lg object-cover" /><h3 className="mt-4 text-lg font-semibold text-slate-900">{selected.name}</h3><p className="text-sm text-slate-500">{selected.sku} · {selected.category}</p><div className="mt-4 grid grid-cols-2 gap-3 text-sm"><p className="rounded-lg bg-slate-50 p-3">Retail <strong className="block text-slate-900">${selected.retail.toFixed(2)}</strong></p><p className="rounded-lg bg-slate-50 p-3">Wholesale <strong className="block text-slate-900">${selected.wholesale.toFixed(2)}</strong></p><p className="rounded-lg bg-slate-50 p-3">Stock <strong className="block text-slate-900">{selected.stock} units</strong></p><p className="rounded-lg bg-slate-50 p-3">Status <strong className="block text-slate-900">{selected.status}</strong></p></div></motion.div></div>}
-    </main>
-  )
-}
+
+      {/* Pricing */}
+      <section className="space-y-3">
+        <h3 className="border-l-2 border-amber-500 pl-2 text-sm font-semibold text-gray-900">
+          Product Pricing
+        </h3>
+
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div>
+            <label className={labelStyle}>Retail Price (GH₵)</label>
+            <input
+              type="number"
+              placeholder="0.00"
+              className={inputStyle}
+            />
+          </div>
+
+          <div>
+            <label className={labelStyle}>Wholesale Price (GH₵)</label>
+            <input
+              type="number"
+              placeholder="0.00"
+              className={inputStyle}
+            />
+          </div>
+        </div>
+      </section>
+
+   <div className="sm:col-span-2 lg:col-span-3">
+            <label className={labelStyle}>Description</label>
+            <textarea
+              rows={5}
+              placeholder="Product description..."
+              className={inputStyle + " resize-none"}
+            />
+          </div>
+
+      {/* Images */}
+      <section className="space-y-3">
+        <h3 className="border-l-2 border-amber-500 pl-2 text-sm font-semibold text-gray-900">
+          Product Images
+        </h3>
+
+        <label className="flex cursor-pointer items-center gap-3 rounded-md border border-dashed border-gray-300 bg-gray-50 px-4 py-4 transition hover:border-amber-500 hover:bg-amber-50/40">
+          <ImagePlus size={22} className="shrink-0 text-amber-600" />
+
+          <div>
+            <p className="text-sm font-medium text-gray-800">
+              Upload images
+            </p>
+            <p className="text-xs text-gray-500">
+              Select multiple product images
+            </p>
+          </div>
+
+          <span className="ml-auto text-xs font-semibold text-amber-700">
+            Browse
+          </span>
+
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            className="hidden"
+          />
+        </label>
+      </section>
+
+      {/* Actions */}
+      <div className="flex justify-end gap-2 border-t border-gray-200 pt-3">
+        <button
+          type="button"
+          className="rounded-md px-4 py-2 text-xs font-medium text-gray-600 hover:bg-gray-100"
+        >
+          Cancel
+        </button>
+
+
+<Button
+  type="button"
+  variant="contained"
+  sx={{
+    backgroundColor: "#F59E0B",
+    color: "#000",
+    textTransform: "none",
+    fontSize: "12px",
+    fontWeight: 600,
+    borderRadius: "6px",
+    boxShadow: "none",
+    px: 2.5,
+    "&:hover": {
+      backgroundColor: "#D97706",
+      boxShadow: "none",
+    },
+  }}
+>
+  Save Product
+</Button>
+      </div>
+    </div>
+  );
+};
+
+export default AdminProducts;
